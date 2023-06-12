@@ -1,0 +1,8 @@
+.item-section__list li input {
+  margin: 0 1em;
+}
+
+.item-section__add-button {
+  background-color: #4e74ff;
+  color: white;
+}
