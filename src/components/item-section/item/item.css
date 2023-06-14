@@ -1,0 +1,49 @@
+.item-section__item {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  list-style-type: none;
+}
+
+.item-section__item input {
+  height: 2.5em;
+  text-align: center;
+}
+
+.item-section__item input:focus {
+  outline: none;
+}
+
+.item-section__item-checkbox {
+  background-color: red;
+  transform: scale(1.5);
+}
+
+.item-section__item-name {
+  border: 1px solid #7f9bfe;
+  flex-grow: 1;
+}
+
+.item-section__item-ratio {
+  width: 6em;
+}
+
+.item-section__item-remove-button {
+  padding: 0.25em;
+  cursor: pointer;
+  transition: all 0.25s;
+  border-radius: 5px;
+}
+
+.item-section__item-remove-button svg path {
+  fill: gray;
+  transition: all 0.25s;
+}
+
+.item-section__item-remove-button:hover {
+  background-color: rgb(235, 233, 233);
+}
+
+.item-section__item-remove-button:hover svg path {
+  fill: black;
+}
