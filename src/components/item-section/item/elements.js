@@ -1,31 +1,15 @@
-import './item.css';
+import { handleRemoveItem } from './events.js';
+import { lists } from './states.js';
 
-let nextId = 0;
-
-/**
- * 항목 아이템을 생성하여 문서에 추가합니다.
- */
-export const addItem = () => {
-  const $list = document.querySelector('#main .item-section__list');
-
-  const $listItem = createListItem(nextId++);
-  const $checkbox = createCheckbox();
-  const $itemName = createItemName();
-  const $ratio = createRatio();
-  const $removeButton = createRemoveButton(createCloseIcon());
-
-  $listItem.append($checkbox, $itemName, $ratio, $removeButton);
-  $list.appendChild($listItem);
-};
-
-function createCheckbox() {
+export function createCheckbox(checked) {
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-checkbox';
   $element.setAttribute('type', 'checkbox');
+  $element.setAttribute('checked', checked);
   return $element;
 }
 
-function createItemName() {
+export function createItemName() {
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-name';
   $element.setAttribute('type', 'text');
@@ -33,15 +17,18 @@ function createItemName() {
   return $element;
 }
 
-function createRatio() {
+export function createRatio(ratio) {
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-ratio';
   $element.setAttribute('type', 'number');
   $element.setAttribute('placeholder', '비율');
+  $element.value = ratio;
+  $element.setAttribute('min', '1');
+  $element.setAttribute('max', '100');
   return $element;
 }
 
-function createListItem(key) {
+export function createListItem(key) {
   const $element = document.createElement('li');
   $element.classList = 'item-section__item';
   $element.setAttribute('data-key', key);
@@ -49,7 +36,7 @@ function createListItem(key) {
 }
 
 const domParser = new DOMParser();
-function createCloseIcon() {
+export function createCloseIcon() {
   const closeIcon = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20">
       <path
@@ -61,11 +48,18 @@ function createCloseIcon() {
 }
 
 /**
+ * 삭제 버튼 요소를 만들고, 내부에 X 모양의 svg 이미지를 등록합니다.
  * @param {HTMLElement} $icon createCloseIcon() 함수가 생성하여 반환한 svg 요소를 인자로 전달받아야 합니다.
  */
-function createRemoveButton($icon) {
+export function createRemoveButton($icon) {
   const $element = document.createElement('span');
   $element.classList = 'item-section__item-remove-button';
   $element.appendChild($icon);
+  $element.addEventListener('click', (e) => handleRemoveItem(e));
   return $element;
+}
+
+export function updateListCount() {
+  const $element = document.querySelector('#main .item-section__item-count');
+  $element.textContent = `${lists.length} / 10`;
 }
