@@ -1,12 +1,14 @@
 .item-section__item {
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 2em;
   list-style-type: none;
 }
 
 .item-section__item input {
-  height: 2.5em;
+  height: 3em;
+  border-radius: 5px;
+  font-size: 1rem;
   text-align: center;
   transition: all 0.25s;
 }
@@ -17,12 +19,12 @@
 
 .item-section__item-checkbox {
   background-color: red;
-  transform: scale(1.5);
+  transform: scale(2);
 }
 
 .item-section__item-name {
-  border: 1px solid #7f9bfe;
   flex-grow: 1;
+  border: 1px solid #7f9bfe9e;
 }
 
 .item-section__item-name:focus {
@@ -31,7 +33,7 @@
 
 .item-section__item-ratio {
   width: 6em;
-  border: 1px solid rgb(118, 118, 118);
+  border: 1px solid rgba(118, 118, 118, 0.362);
 }
 
 .item-section__item-ratio:focus {
@@ -40,18 +42,18 @@
 
 .item-section__item-remove-button {
   padding: 0.25em;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.25s;
-  border-radius: 5px;
 }
 
 .item-section__item-remove-button svg path {
-  fill: gray;
+  fill: rgba(128, 128, 128, 0.79);
   transition: all 0.25s;
 }
 
 .item-section__item-remove-button:hover {
-  background-color: rgb(235, 233, 233);
+  background-color: rgba(235, 233, 233, 0.23);
 }
 
 .item-section__item-remove-button:hover svg path {
