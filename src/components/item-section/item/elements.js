@@ -1,5 +1,5 @@
 import { handleRemoveItem } from './events.js';
-import { lists } from './states.js';
+import { lists, setValue, setRatio, setList } from './states.js';
 
 export function createCheckbox(checked) {
   const $element = document.createElement('input');
@@ -9,22 +9,30 @@ export function createCheckbox(checked) {
   return $element;
 }
 
-export function createItemName() {
+export function createItemName(key) {
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-name';
   $element.setAttribute('type', 'text');
   $element.setAttribute('placeholder', '항목 이름');
+  $element.addEventListener('blur', (e) => {
+    setValue(key, e.target.value);
+    // setList(key, e.target.value);
+  });
   return $element;
 }
 
-export function createRatio(ratio) {
+export function createRatio(key,ratio) { //숫자타입 외에 다른 글자 입력 안되게 하기
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-ratio';
-  $element.setAttribute('type', 'number');
+  // $element.setAttribute('type', 'number');
   $element.setAttribute('placeholder', '비율');
   $element.value = ratio;
-  $element.setAttribute('min', '1');
-  $element.setAttribute('max', '100');
+  // $element.setAttribute('min', '1');
+  // $element.setAttribute('max', '100');
+  $element.addEventListener('blur', (e) => {
+    setRatio(key, e.target.value);
+    // setList(key, e.target.value*1);
+  });
   return $element;
 }
 
