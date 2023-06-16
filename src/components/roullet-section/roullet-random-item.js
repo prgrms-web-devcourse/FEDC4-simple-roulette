@@ -1,4 +1,4 @@
-function RandomItemBtn({ $button, initialState, sumRatio, $canvas }) {
+function RandomItemBtn({ $button, initialState, sumRatio }) {
   this.state = initialState;
 
   this.setState = (nextState) => {
