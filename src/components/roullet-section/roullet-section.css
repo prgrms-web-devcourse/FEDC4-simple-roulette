@@ -1,17 +1,17 @@
-.roullet-section{
+.roullet-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.roullet-section__winner{
+.roullet-section__winner {
   font-weight: 800;
   font-size: 25px;
   color: #5b71bd;
 }
 
-.roullet-section__roullet{
+.roullet-section__roullet {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@
   position: relative;
 }
 
-.start-button{
+.start-button {
   width: 80px;
   height: 80px;
   background-color: white;
@@ -35,13 +35,13 @@
   position: absolute;
 }
 
-.start-button:active{
+.start-button:active {
   margin-left: 3px;
   margin-top: 3px;
   box-shadow: none;
 }
 
-.roullet-arrow{
+.roullet-arrow {
   position: absolute;
   top: -5px;
 }

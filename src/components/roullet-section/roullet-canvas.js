@@ -1,4 +1,4 @@
-function RoulletCanvas({ $canvas, initialState, sumRatios }) {
+function RoulletCanvas({ $canvas, initialState, sumRatio }) {
   this.state = initialState;
 
   this.setState = (nextState) => {
@@ -20,7 +20,7 @@ function RoulletCanvas({ $canvas, initialState, sumRatios }) {
     ctx.strokeStyle = "#DBDBDB"; //룰렛선 색상
 
     // 룰렛 부채꼴 영역
-    const sum = sumRatios(this.state);
+    const sum = sumRatio(this.state);
     let startAngle = 0;
     for (const { key, value, checked, ratio } of this.state) {
       if (checked) continue;
