@@ -61,10 +61,14 @@
 
 .item-section__add-button {
   padding: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
   border: none;
   border-radius: 10px;
   background-color: #4e74ff;
   color: white;
+  fill: white;
   cursor: pointer;
   user-select: none;
   transition: all 0.25s;
