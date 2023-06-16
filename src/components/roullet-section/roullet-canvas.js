@@ -46,7 +46,6 @@ function RoulletCanvas({ $canvas, initialState, sumRatio }) {
       ctx.translate(textX, textY); // 캔버스의 원점을 텍스트 위치로 이동
       ctx.rotate(textAngle); // 텍스트를 대각선으로 회전
 
-      console.log(angle);
       const fontSize = angle < 18 ? angle : 18;
       ctx.font = `bold ${fontSize}px Raleway`;
       ctx.fillStyle = "black";
