@@ -14,12 +14,30 @@
 
 .item-section__list {
   height: 30em;
-  padding: 1em;
+  padding: 2em;
   display: flex;
   flex-direction: column;
-  gap: 1em;
-  border: 2px dashed #2a59fe;
-  overflow-y: auto;
+  gap: 1.5em;
+  border: 2px solid #2a58fe4e;
+  border-radius: 15px;
+  box-shadow: 2px 10px 11px 5px rgba(211, 211, 211, 0.75);
+  overflow-y: scroll;
+}
+
+.item-section__list::-webkit-scrollbar {
+  /* 스크롤바의 너비 */
+  width: 0.5em;
+  height: 0.5em;
+}
+
+.item-section__list::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: rgb(58, 58, 58); /* 스크롤바의 색상 */
+  border-radius: 0.7em;
+}
+
+.item-section__list::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.1); /* 스크롤바 뒷 배경 색상 */
 }
 
 .item-section__footer {
@@ -29,10 +47,11 @@
 
 .item-section__refresh-button {
   padding: 0.85em;
-  border-radius: 13px;
   display: inline-block;
+  border-radius: 13px;
   box-shadow: 2px 10px 11px 5px rgba(211, 211, 211, 0.75);
   cursor: pointer;
+  user-select: none;
   transition: all 0.25s;
 }
 
@@ -47,6 +66,7 @@
   background-color: #4e74ff;
   color: white;
   cursor: pointer;
+  user-select: none;
   transition: all 0.25s;
 }
 
