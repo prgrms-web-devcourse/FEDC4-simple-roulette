@@ -8,6 +8,7 @@
 .item-section__item input {
   height: 3em;
   border-radius: 5px;
+  font-size: 1rem;
   text-align: center;
   transition: all 0.25s;
 }
@@ -18,7 +19,7 @@
 
 .item-section__item-checkbox {
   background-color: red;
-  transform: scale(1.5);
+  transform: scale(2);
 }
 
 .item-section__item-name {
