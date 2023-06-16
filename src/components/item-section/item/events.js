@@ -19,7 +19,7 @@ export const handleAddItem = () => {
   const $list = document.querySelector('#main .item-section__list');
 
   const $listItem = createListItem(newItem.key);
-  const $checkbox = createCheckbox(newItem.checked);
+  const $checkbox = createCheckbox(newItem.key,newItem.checked);
   const $itemName = createItemName(newItem.key);
   const $ratio = createRatio(newItem.key,newItem.ratio);
   const $removeButton = createRemoveButton(createCloseIcon());

@@ -1,11 +1,15 @@
 import { handleRemoveItem } from './events.js';
-import { lists, setValue, setRatio, setList } from './states.js';
+import { lists, setValue, setRatio, setList, setCheck } from './states.js';
 
-export function createCheckbox(checked) {
+export function createCheckbox(key,checked) {
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-checkbox';
   $element.setAttribute('type', 'checkbox');
   $element.setAttribute('checked', checked);
+  $element.addEventListener('click', (e) => {
+    setCheck(key,e.target.checked);
+  });
+  
   return $element;
 }
 
