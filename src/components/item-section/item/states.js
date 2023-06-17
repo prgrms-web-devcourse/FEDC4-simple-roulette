@@ -1,3 +1,5 @@
+import { storage } from './storage.js';
+
 export let lists = [];
 export let nextId = 0;
 
@@ -32,12 +34,15 @@ export function setCheck(selected_key,checked){
       return lists[i].checked = checked;
     }
   });
+  storage.setItem('item_lists', JSON.stringify(lists));
 }
+
 export function setValue(selected_key,value){
   console.log('setValue',selected_key,value)
   lists.map(({key},i) => {
     if(key === selected_key)lists[i].value = value;
   });
+  storage.setItem('item_lists', JSON.stringify(lists));
 }
 
 export function setRatio(selected_key,ratio){
@@ -45,13 +50,5 @@ export function setRatio(selected_key,ratio){
   lists.map(({key},i) => {
     if(key === selected_key)lists[i].ratio = ratio;
   });
+  storage.setItem('item_lists', JSON.stringify(lists));
 }
-
-// export function setList(selected_key,value){
-//   console.log('setValue',selected_key,typeof value)
-//   lists.map(({key},i) => {
-//     if(typeof value === numuber)lists[i].ratio = ratio;
-//     else if(typeof value === text)lists[i].value = value;
-//   });
-//   console.log(lists);
-// }
