@@ -7,7 +7,8 @@ import {
   createRemoveButton,
   updateListCount,
 } from './elements.js';
-import { removeItem, refreshList } from './states.js';
+import { removeItem, refreshList, addItem } from './states.js';
+import { storage } from './storage.js';
 
 /**
  * 항목 아이템을 생성하여 문서에 추가합니다.
@@ -50,5 +51,8 @@ export const handleRefreshList = () => {
   const $list = document.querySelector('#main .item-section__list');
   $list.innerHTML = '';
 
-  handleAddItem();
+  const newItem = addItem();
+  if (!newItem) return;
+  storage.setItem('item_lists', JSON.stringify([newItem]));
+  handleAddItem(newItem);
 };
