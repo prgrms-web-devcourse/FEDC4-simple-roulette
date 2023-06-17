@@ -7,7 +7,7 @@ import {
   createRemoveButton,
   updateListCount,
 } from './elements.js';
-import { addItem, removeItem, refreshList } from './states.js';
+import { removeItem, refreshList } from './states.js';
 
 /**
  * 항목 아이템을 생성하여 문서에 추가합니다.

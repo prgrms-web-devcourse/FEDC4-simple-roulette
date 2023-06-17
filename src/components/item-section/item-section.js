@@ -3,7 +3,7 @@ import { handleAddItem, handleRefreshList } from './item/events.js';
 import './item-section.css';
 import './item/item.css';
 import { addItem } from './item/states.js';
-import { getItem, storage } from './item/storage.js';
+import { storage } from './item/storage.js';
 
 function ItemSection() {
   const $wrapper = document.querySelector('#main .item-section');
