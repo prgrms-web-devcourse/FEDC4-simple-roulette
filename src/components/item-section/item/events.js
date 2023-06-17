@@ -12,16 +12,13 @@ import { addItem, removeItem, refreshList } from './states.js';
 /**
  * 항목 아이템을 생성하여 문서에 추가합니다.
  */
-export const handleAddItem = () => {
-  const newItem = addItem();
-  if (!newItem) return;
-
+export const handleAddItem = ({key,value,checked,ratio}) => {
   const $list = document.querySelector('#main .item-section__list');
 
-  const $listItem = createListItem(newItem.key);
-  const $checkbox = createCheckbox(newItem.key,newItem.checked);
-  const $itemName = createItemName(newItem.key);
-  const $ratio = createRatio(newItem.key,newItem.ratio);
+  const $listItem = createListItem(key);
+  const $checkbox = createCheckbox(key,checked);
+  const $itemName = createItemName(key,value);
+  const $ratio = createRatio(key,ratio);
   const $removeButton = createRemoveButton(createCloseIcon());
 
   $listItem.append($checkbox, $itemName, $ratio, $removeButton);

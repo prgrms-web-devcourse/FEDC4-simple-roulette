@@ -13,11 +13,11 @@ export function createCheckbox(key,checked) {
   return $element;
 }
 
-export function createItemName(key) {
+export function createItemName(key,value) {
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-name';
   $element.setAttribute('type', 'text');
-  $element.setAttribute('placeholder', '항목 이름');
+  value.length?$element.setAttribute('value', value):$element.setAttribute('placeholder', '항목 이름');
   $element.addEventListener('blur', (e) => {
     setValue(key, e.target.value);
     // setList(key, e.target.value);
