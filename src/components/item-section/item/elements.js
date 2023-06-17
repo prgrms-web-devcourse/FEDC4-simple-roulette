@@ -34,7 +34,7 @@ export function createRatio(key,ratio) { //숫자타입 외에 다른 글자 입
   // $element.setAttribute('min', '1');
   // $element.setAttribute('max', '100');
   $element.addEventListener('blur', (e) => {
-    setRatio(key, e.target.value);
+    setRatio(key, e.target.value*1);
     // setList(key, e.target.value*1);
   });
   return $element;
