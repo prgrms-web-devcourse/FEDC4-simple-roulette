@@ -2,7 +2,7 @@ import html from './item-section.html';
 import { handleAddItem, handleRefreshList } from './item/events.js';
 import './item-section.css';
 import './item/item.css';
-import { addItem } from './item/states.js';
+import { addItem, setLocalInfo } from './item/states.js';
 import { storage } from './item/storage.js';
 
 function ItemSection() {
@@ -21,10 +21,12 @@ function ItemSection() {
     handleAddItem(newItem);
   });
 
+  const initialId = storage.getItem('item_id', 0);
   const newItem = addItem();
   if (!newItem) return;
-  const initialState = storage.getItem('item_lists',newItem);
-  initialState.map((e) => {
+  const initialList = storage.getItem('item_lists',newItem);
+  setLocalInfo(initialList, initialId);
+  initialList.map((e) => {
     handleAddItem(e)
   })
 }

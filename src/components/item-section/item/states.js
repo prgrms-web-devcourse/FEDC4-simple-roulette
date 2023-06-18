@@ -13,6 +13,8 @@ export function addItem() {
     return;
   }
 
+  storage.setItem('item_id', JSON.stringify(nextId));
+
   const newItem = {
     key: nextId++,
     value: '',
@@ -28,6 +30,10 @@ export function removeItem(key) {
   lists = lists.filter(item => item.key !== key);
 }
 
+export function setLocalInfo(local_list, local_nextId){
+  lists = local_list;
+  nextId = local_nextId+1 ?? 0;
+}
 export function setCheck(selected_key,checked){
   lists.map(({key},i) => {
     if(key === selected_key){
