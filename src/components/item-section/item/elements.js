@@ -14,14 +14,23 @@ export function createCheckbox(key,checked) {
 }
 
 export function createItemName(key,value) {
-  const $element = document.createElement('input');
-  $element.classList = 'item-section__item-name';
-  $element.setAttribute('type', 'text');
-  value.length?$element.setAttribute('value', value):$element.setAttribute('placeholder', '항목 이름');
-  $element.addEventListener('blur', (e) => {
+  const $wrapper = document.createElement('div');
+  $wrapper.classList = 'item-section__item-name';
+
+  const $index = document.createElement('span');
+  $index.classList = 'item-section__item-name-index';
+  $index.textContent = '123';
+
+  const $input = document.createElement('input');
+  $input.classList = 'item-section__item-name-input';
+  $input.setAttribute('type', 'text');
+  value.length ? $input.setAttribute('value', value) : $input.setAttribute('placeholder', '항목 이름');
+  $input.addEventListener('blur', (e) => {
     setValue(key, e.target.value);
   });
-  return $element;
+
+  $wrapper.append($index, $input);
+  return $wrapper;
 }
 
 export function createRatio(key,ratio) { //숫자타입 외에 다른 글자 입력 안되게 하기
