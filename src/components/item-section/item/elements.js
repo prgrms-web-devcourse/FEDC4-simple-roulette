@@ -5,7 +5,7 @@ export function createCheckbox(key,checked) {
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-checkbox';
   $element.setAttribute('type', 'checkbox');
-  $element.setAttribute('checked', checked);
+  if(checked)$element.setAttribute('checked', checked);
   $element.addEventListener('click', (e) => {
     setCheck(key,e.target.checked);
   });
