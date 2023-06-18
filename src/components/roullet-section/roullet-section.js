@@ -7,27 +7,27 @@ import storage from "./roullet-storage";
 const lists = [
   {
     key: 1,
-    value: "쉬운 난이도",
+    value: "A",
     checked: false,
-    ratio: 1,
+    ratio: 3,
   },
   {
     key: 2,
-    value: "중간 난이도",
+    value: "B",
     checked: false,
-    ratio: 1,
+    ratio: 2,
   },
   {
     key: 3,
-    value: "쉬운 난이도",
+    value: "C",
     checked: false,
-    ratio: 1,
+    ratio: 4,
   },
   {
     key: 4,
-    value: "중간 난이도",
+    value: "D",
     checked: false,
-    ratio: 1,
+    ratio: 6,
   },
 ];
 
@@ -59,6 +59,7 @@ function RoulletSection() {
       ),
     setResult: storage.setItem.bind(storage),
     getResult: storage.getItem.bind(storage),
+    $canvas,
   });
 }
 
