@@ -54,5 +54,5 @@ export const handleRefreshList = () => {
   const newItem = addItem();
   if (!newItem) return;
   storage.setItem('item_lists', JSON.stringify([newItem]));
-  handleAddItem(newItem);
+  handleAddItem(newItem,1);
 };
