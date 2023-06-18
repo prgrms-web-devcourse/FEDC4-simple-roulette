@@ -17,7 +17,6 @@ function ItemSection() {
   $addButton.addEventListener('click', () => {
     const newItem = addItem();
     if (!newItem) return;
-    console.log(newItem)
     handleAddItem(newItem);
   });
 

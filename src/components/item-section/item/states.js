@@ -28,12 +28,14 @@ export function addItem() {
 
 export function removeItem(key) {
   lists = lists.filter(item => item.key !== key);
+  storage.setItem('item_lists', JSON.stringify(lists));
 }
 
 export function setLocalInfo(local_list, local_nextId){
   lists = local_list;
   nextId = local_nextId+1 ?? 0;
 }
+
 export function setCheck(selected_key,checked){
   lists.map(({key},i) => {
     if(key === selected_key){
@@ -44,7 +46,6 @@ export function setCheck(selected_key,checked){
 }
 
 export function setValue(selected_key,value){
-  console.log('setValue',selected_key,value)
   lists.map(({key},i) => {
     if(key === selected_key)lists[i].value = value;
   });
@@ -52,7 +53,6 @@ export function setValue(selected_key,value){
 }
 
 export function setRatio(selected_key,ratio){
-  console.log('setRatio',selected_key,ratio)
   lists.map(({key},i) => {
     if(key === selected_key)lists[i].ratio = ratio;
   });
