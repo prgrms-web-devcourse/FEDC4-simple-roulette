@@ -13,12 +13,12 @@ import { storage } from './storage.js';
 /**
  * 항목 아이템을 생성하여 문서에 추가합니다.
  */
-export const handleAddItem = ({key,value,checked,ratio}) => {
+export const handleAddItem = ({key,value,checked,ratio}, index) => {
   const $list = document.querySelector('#main .item-section__list');
 
   const $listItem = createListItem(key);
   const $checkbox = createCheckbox(key,checked);
-  const $itemName = createItemName(key,value);
+  const $itemName = createItemName(key,value,index);
   const $ratio = createRatio(key,ratio);
   const $removeButton = createRemoveButton(createCloseIcon());
 

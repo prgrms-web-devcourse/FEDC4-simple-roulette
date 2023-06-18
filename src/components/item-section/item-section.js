@@ -2,7 +2,7 @@ import html from './item-section.html';
 import { handleAddItem, handleRefreshList } from './item/events.js';
 import './item-section.css';
 import './item/item.css';
-import { addItem, setLocalInfo } from './item/states.js';
+import { addItem, setLocalInfo, lists } from './item/states.js';
 import { storage } from './item/storage.js';
 
 function ItemSection() {
@@ -17,7 +17,7 @@ function ItemSection() {
   $addButton.addEventListener('click', () => {
     const newItem = addItem();
     if (!newItem) return;
-    handleAddItem(newItem);
+    handleAddItem(newItem, lists.length);
   });
 
   const initialId = storage.getItem('item_id', 0);
@@ -25,8 +25,8 @@ function ItemSection() {
   if (!newItem) return;
   const initialList = storage.getItem('item_lists',newItem);
   setLocalInfo(initialList, initialId);
-  initialList.map((e) => {
-    handleAddItem(e)
+  initialList.map((e, i) => {
+    handleAddItem(e, i + 1);
   })
 }
 

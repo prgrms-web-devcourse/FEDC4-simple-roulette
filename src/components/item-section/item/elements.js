@@ -13,15 +13,24 @@ export function createCheckbox(key,checked) {
   return $element;
 }
 
-export function createItemName(key,value) {
-  const $element = document.createElement('input');
-  $element.classList = 'item-section__item-name';
-  $element.setAttribute('type', 'text');
-  value.length?$element.setAttribute('value', value):$element.setAttribute('placeholder', '항목 이름');
-  $element.addEventListener('blur', (e) => {
+export function createItemName(key,value,index) {
+  const $wrapper = document.createElement('div');
+  $wrapper.classList = 'item-section__item-name';
+
+  const $index = document.createElement('span');
+  $index.classList = 'item-section__item-name-index';
+  $index.textContent = index;
+
+  const $input = document.createElement('input');
+  $input.classList = 'item-section__item-name-input';
+  $input.setAttribute('type', 'text');
+  value.length ? $input.setAttribute('value', value) : $input.setAttribute('placeholder', '항목 이름');
+  $input.addEventListener('blur', (e) => {
     setValue(key, e.target.value);
   });
-  return $element;
+
+  $wrapper.append($index, $input);
+  return $wrapper;
 }
 
 export function createRatio(key,ratio) { //숫자타입 외에 다른 글자 입력 안되게 하기
@@ -66,11 +75,22 @@ export function createRemoveButton($icon) {
   const $element = document.createElement('span');
   $element.classList = 'item-section__item-remove-button';
   $element.appendChild($icon);
-  $element.addEventListener('click', (e) => handleRemoveItem(e));
+  $element.addEventListener('click', (e) => {
+    handleRemoveItem(e);
+    updateItemIndexes();
+  });
   return $element;
 }
 
 export function updateListCount() {
   const $element = document.querySelector('#main .item-section__item-count');
   $element.textContent = `${lists.length} / 10`;
+}
+
+export function updateItemIndexes() {
+  document
+    .querySelectorAll('#main .item-section__item-name-index')
+    .forEach(($element, i) => {
+      $element.textContent = i + 1;
+  });
 }
