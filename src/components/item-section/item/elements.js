@@ -27,8 +27,12 @@ export function createItemName(key,value) {
 export function createRatio(key,ratio) { //숫자타입 외에 다른 글자 입력 안되게 하기
   const $element = document.createElement('input');
   $element.classList = 'item-section__item-ratio';
+  $element.setAttribute('type', 'text');
   $element.setAttribute('placeholder', '비율');
   $element.value = ratio;
+  $element.addEventListener('input', () => {
+    $element.value = $element.value.replace(/[^0-9.]/g, '');
+  })
   $element.addEventListener('blur', (e) => {
     setRatio(key, e.target.value*1);
   });
