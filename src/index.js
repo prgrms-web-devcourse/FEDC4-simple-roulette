@@ -4,5 +4,4 @@ import RoulletSection from "./components/roullet-section/roullet-section.js";
 import "./index.css";
 
 Header();
-ItemSection();
-RoulletSection();
+ItemSection(RoulletSection());
