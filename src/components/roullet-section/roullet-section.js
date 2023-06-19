@@ -2,7 +2,7 @@ import html from "./roullet-section.html";
 import "./roullet-section.css";
 import RoulletCanvas from "./roullet-canvas";
 import RandomItemBtn from "./roullet-random-item";
-import storage from "./roullet-storage";
+import { storage } from "../../storage";
 
 const lists = [
   {
@@ -37,7 +37,9 @@ function RoulletSection() {
   const $button = document.querySelector(".start-button");
   const $canvas = document.querySelector(".roullet-roll");
 
-  // const lists = storage.getItem("list", []); **추후 주석 해제**
+  const lists = storage.getItem("list", []);
+
+  console.log(lists);
 
   const Roullet = new RoulletCanvas({
     $canvas,

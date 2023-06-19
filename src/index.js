@@ -5,4 +5,4 @@ import "./index.css";
 
 Header();
 ItemSection();
-RoulletSection();
+// RoulletSection();
