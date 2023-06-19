@@ -14,6 +14,7 @@ export function addItem() {
   }
 
   storage.setItem("item_id", JSON.stringify(nextId));
+  storage.setItem("item_lists", JSON.stringify(lists));
 
   const newItem = {
     key: nextId++,

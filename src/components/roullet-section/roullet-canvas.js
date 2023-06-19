@@ -1,8 +1,20 @@
 function RoulletCanvas({ $canvas, initialState, sumRatio }) {
-  const colors = ["#E4EAFF","#C2D0FF","#A1B5FE","#7F9BFE","#5D81FE","#3C66FD","#1A4CFD","#0237F3","#022FD1","#0128B0"]
+  const colors = [
+    "#E4EAFF",
+    "#C2D0FF",
+    "#A1B5FE",
+    "#7F9BFE",
+    "#5D81FE",
+    "#3C66FD",
+    "#1A4CFD",
+    "#0237F3",
+    "#022FD1",
+    "#0128B0",
+  ];
   this.state = initialState;
 
   this.setState = (nextState) => {
+    console.log(nextState);
     this.state = nextState;
     this.render(this.circleState);
   };
@@ -21,9 +33,9 @@ function RoulletCanvas({ $canvas, initialState, sumRatio }) {
 
     // 룰렛 부채꼴 영역
     const sum = sumRatio(this.state);
-    let startAngle = -(1/2) * Math.PI ;
+    let startAngle = -(1 / 2) * Math.PI;
     for (const { key, value, checked, ratio } of this.state) {
-      if (checked) continue;
+      if (!checked) continue;
       const percent = (ratio / sum) * 100;
       const angle = (360 * percent) / 100;
       const radian = (angle * Math.PI) / 180;
@@ -33,7 +45,7 @@ function RoulletCanvas({ $canvas, initialState, sumRatio }) {
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
       ctx.closePath();
-      ctx.fillStyle = colors[key-1]
+      ctx.fillStyle = colors[key - 1];
       ctx.fill();
       ctx.stroke();
 

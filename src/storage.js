@@ -9,8 +9,6 @@ export const storage = (function (storage) {
   const getItem = (key, defaultValue) => {
     try {
       const storedValue = storage.getItem(key);
-      console.log(":::", storedValue);
-      console.log("::::::::::::", JSON.parse(storedValue));
 
       if (storedValue) {
         return JSON.parse(storedValue);
