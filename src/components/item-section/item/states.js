@@ -1,3 +1,5 @@
+import { storage } from './storage.js';
+
 export let lists = [];
 export let nextId = 0;
 
@@ -10,6 +12,8 @@ export function addItem() {
     alert('항목은 최대 10개 까지 추가할 수 있어요!');
     return;
   }
+
+  storage.setItem('item_id', JSON.stringify(nextId));
 
   const newItem = {
     key: nextId++,
@@ -24,6 +28,12 @@ export function addItem() {
 
 export function removeItem(key) {
   lists = lists.filter(item => item.key !== key);
+  storage.setItem('item_lists', JSON.stringify(lists));
+}
+
+export function setLocalInfo(local_list, local_nextId){
+  lists = local_list;
+  nextId = local_nextId+1 ?? 0;
 }
 
 export function setCheck(selected_key,checked){
@@ -32,26 +42,19 @@ export function setCheck(selected_key,checked){
       return lists[i].checked = checked;
     }
   });
+  storage.setItem('item_lists', JSON.stringify(lists));
 }
+
 export function setValue(selected_key,value){
-  console.log('setValue',selected_key,value)
   lists.map(({key},i) => {
     if(key === selected_key)lists[i].value = value;
   });
+  storage.setItem('item_lists', JSON.stringify(lists));
 }
 
 export function setRatio(selected_key,ratio){
-  console.log('setRatio',selected_key,ratio)
   lists.map(({key},i) => {
     if(key === selected_key)lists[i].ratio = ratio;
   });
+  storage.setItem('item_lists', JSON.stringify(lists));
 }
-
-// export function setList(selected_key,value){
-//   console.log('setValue',selected_key,typeof value)
-//   lists.map(({key},i) => {
-//     if(typeof value === numuber)lists[i].ratio = ratio;
-//     else if(typeof value === text)lists[i].value = value;
-//   });
-//   console.log(lists);
-// }
