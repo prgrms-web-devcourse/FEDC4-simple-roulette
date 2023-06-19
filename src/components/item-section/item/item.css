@@ -1,0 +1,77 @@
+.item-section__item {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  list-style-type: none;
+}
+
+.item-section__item input {
+  height: 3em;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.item-section__item input:focus {
+  outline: none;
+}
+
+.item-section__item-checkbox {
+  background-color: red;
+  transform: scale(2);
+}
+
+.item-section__item-name {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75em;
+  border: 1px solid #7f9bfe9e;
+  border-radius: 5px;
+  transition: all 0.25s;
+}
+
+.item-section__item-name:focus-within {
+  box-shadow: 0px 0px 1px 1px #7f9bfe;
+}
+
+.item-section__item-name-index {
+  padding-right: 0.75em;
+  border-right: 1px solid #2A59FE;
+}
+
+.item-section__item-name-input {
+  flex-grow: 1;
+  padding-left: 0.75em;
+  border: none;
+}
+
+.item-section__item-ratio {
+  width: 6em;
+  border: 1px solid rgba(118, 118, 118, 0.362);
+}
+
+.item-section__item-ratio:focus {
+  box-shadow: 0px 0px 1px 1px rgb(118, 118, 118);
+}
+
+.item-section__item-remove-button {
+  padding: 0.25em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.item-section__item-remove-button svg path {
+  fill: rgba(128, 128, 128, 0.79);
+  transition: all 0.25s;
+}
+
+.item-section__item-remove-button:hover {
+  background-color: rgba(235, 233, 233, 0.23);
+}
+
+.item-section__item-remove-button:hover svg path {
+  fill: black;
+}
