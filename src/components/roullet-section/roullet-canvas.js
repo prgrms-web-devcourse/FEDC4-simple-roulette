@@ -14,7 +14,6 @@ function RoulletCanvas({ $canvas, initialState, sumRatio }) {
   this.state = initialState;
 
   this.setState = (nextState) => {
-    console.log(nextState);
     this.state = nextState;
     this.render(this.circleState);
   };

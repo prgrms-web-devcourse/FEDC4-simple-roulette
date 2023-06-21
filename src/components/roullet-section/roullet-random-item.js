@@ -10,13 +10,11 @@ function RandomItemBtn({
 
   this.setState = (nextState) => {
     this.state = nextState;
-    this.render;
   };
 
   this.rotate = (totalRatio, randomValue) => {
     $canvas.style.transform = `initial`;
     $canvas.style.transition = `initial`;
-    console.log(randomValue); // **추후 콘솔 삭제**
 
     setTimeout(() => {
       const angle = 360 / totalRatio;
@@ -27,17 +25,20 @@ function RandomItemBtn({
     }, 0);
   };
 
-  this.render = (() => {
-    $button.addEventListener("click", (e) => {
+  this.randomValue = () => {
+    const isValue =
+      this.state.length > 0 && this.state.every(({ value }) => value);
+
+    if (isValue) {
       const totalRatio = sumRatio(this.state);
       const randomValue = Math.floor(Math.random() * totalRatio);
       this.rotate(totalRatio, randomValue);
 
       let accumulatedRatio = 0;
-      for (const { ratio, value } of this.state) {
+      for (const { ratio, value, checked } of this.state) {
+        if (!checked) continue;
         accumulatedRatio += ratio;
         if (randomValue < accumulatedRatio) {
-          console.log(value); // **추후 콘솔 삭제**
           setResult(
             "results",
             JSON.stringify([...getResult("results", []), value])
@@ -45,8 +46,12 @@ function RandomItemBtn({
           return value;
         }
       }
-    });
-  })();
+    } else {
+      alert("모든 항목에 값이 있어야 합니다!");
+    }
+  };
+
+  $button.addEventListener("click", this.randomValue);
 }
 
 export default RandomItemBtn;
