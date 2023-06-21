@@ -54,7 +54,18 @@ function RandomItemBtn({
     }
   };
 
-  $button.addEventListener("click", this.randomValue);
+  (() => {
+    let isClicked = false;
+    $button.addEventListener("click", () => {
+      if (!isClicked) {
+        isClicked = true;
+        this.randomValue();
+        setTimeout(() => {
+          isClicked = false;
+        }, 3200);
+      }
+    });
+  })();
 }
 
 export default RandomItemBtn;
