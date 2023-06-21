@@ -44,7 +44,6 @@ function RandomItemBtn({
               "results",
               JSON.stringify([...getResult("results", []), value])
             );
-            console.log(value);
           }, 3100);
           break;
         }
