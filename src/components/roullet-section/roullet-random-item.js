@@ -39,11 +39,14 @@ function RandomItemBtn({
         if (!checked) continue;
         accumulatedRatio += ratio;
         if (randomValue < accumulatedRatio) {
-          setResult(
-            "results",
-            JSON.stringify([...getResult("results", []), value])
-          );
-          return value;
+          setTimeout(() => {
+            setResult(
+              "results",
+              JSON.stringify([...getResult("results", []), value])
+            );
+            console.log(value);
+          }, 3100);
+          break;
         }
       }
     } else {
