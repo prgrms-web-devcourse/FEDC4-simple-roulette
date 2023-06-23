@@ -1,9 +1,16 @@
-import html from './header.html';
-import './header.css';
+import html from './Header.html';
+import './Header.css';
 
-function Header() {
-  const $element = document.querySelector('#header');
-  $element.innerHTML = html;
+export default class Header {
+  constructor({ $target }) {
+    this.$header = document.createElement('header');
+    this.$header.id = 'header';
+    $target.appendChild(this.$header);
+    
+    this.render();
+  }
+
+  render() {
+    this.$header.innerHTML = html;
+  }
 }
-
-export default Header;

@@ -1,9 +1,5 @@
-import Header from "./components/header/header.js";
-import ItemSection from "./components/item-section/item-section.js";
-import RoulletSection from "./components/roullet-section/roullet-section.js";
-import "./index.css";
-import ResultHistoryModal from "./components/roullet-section/ResultHistoryModal.js";
+import App from './components/App.js';
+import './index.css';
 
-Header();
-ItemSection(RoulletSection());
-ResultHistoryModal();
+const $target = document.getElementById('app');
+new App({ $target, initialState: '기본 상태 값으로 무엇을 보낼까요오' });

@@ -6,6 +6,7 @@ export const storage = (function (storage) {
       console.log(e.message);
     }
   };
+
   const getItem = (key, defaultValue) => {
     try {
       const storedValue = storage.getItem(key);
@@ -20,18 +21,13 @@ export const storage = (function (storage) {
     }
   };
 
-  //keyword를 key로 가진 값 삭제하기
-  const clearItem = (keword) => {
+  const clearItem = keyword => {
     try {
-      storage.removeItem(keword);
+      storage.removeItem(keyword);
     } catch (e) {
       console.log(e.message);
     }
   };
 
-  return {
-    setItem,
-    getItem,
-    clearItem,
-  };
+  return { setItem, getItem, clearItem };
 })(window.localStorage);
