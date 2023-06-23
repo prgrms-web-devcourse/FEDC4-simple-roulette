@@ -33,8 +33,13 @@ export default function ResultHistoryModal() {
 
   const clearHistory = () => {
     //결과 전체 삭제
-    storage.clearItem("results");
-    renderResults();
+    const removeConfirm = confirm("결과 내역을 전체 삭제하시겠습니까?");
+    if (removeConfirm) {
+      storage.clearItem("results");
+      renderResults();
+    } else {
+      alert("결과 내역이 삭제 되지 않았습니다!");
+    }
   };
 
   const openModal = () => {
