@@ -4,33 +4,6 @@ import RoulletCanvas from "./roullet-canvas";
 import RandomItemBtn from "./roullet-random-item";
 import { storage } from "../../storage";
 
-// const lists = [
-//   {
-//     key: 1,
-//     value: "A",
-//     checked: false,
-//     ratio: 3,
-//   },
-//   {
-//     key: 2,
-//     value: "B",
-//     checked: false,
-//     ratio: 2,
-//   },
-//   {
-//     key: 3,
-//     value: "C",
-//     checked: false,
-//     ratio: 4,
-//   },
-//   {
-//     key: 4,
-//     value: "D",
-//     checked: false,
-//     ratio: 6,
-//   },
-// ];
-
 function RoulletSection() {
   const $wrapper = document.querySelector(".roullet-section");
   $wrapper.insertAdjacentHTML("afterbegin", html);
