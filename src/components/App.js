@@ -1,21 +1,16 @@
 import Header from './header/Header.js';
-import ItemSection from './item-section/ItemSection.js';
-import RoulletSection from './roullet-section/RoulletSection.js';
-import ResultHistoryModal from './result-history-modal/ResultHistoryModal.js';
+import ItemSection from './itemSection/ItemSection.js';
+import RoulletSection from './roulletSection/RoulletSection.js';
+import RoulletHistorySection from './roulletHistorySection/RoulletHistorySection.js';
 
 export default class App {
   constructor({ $target, initialState }) {
     this.state = initialState;
-    
-    new Header({ $target });
 
-    const $main = document.createElement('main');
-    $main.id = 'main';
-    $target.appendChild($main);
-    
-    new ItemSection({ $target: $main });
-    new RoulletSection({ $target: $main });
-    new ResultHistoryModal({ $target });
+    new Header({ $target: document.querySelector('#header') });
+    new ItemSection({ $target: document.querySelector('.item-section') });
+    new RoulletSection({ $target: document.querySelector('.roullet-section') });
+    new RoulletHistorySection({ $target: document.querySelector('.roullet-history-section') });
 
     this.render();
   }
