@@ -29,6 +29,10 @@ export default class App {
         itemListStore.removeItem(key);
         itemSection.setState(itemListStore.state);
       },
+      setCheck: (key, checked) => {
+        itemListStore.setCheck(key, checked);
+        itemSection.setState(itemListStore.state);
+      }
     });
 
     new RoulletSection({ $target: document.querySelector('.roullet-section') });

@@ -3,13 +3,14 @@ import './ItemSection.css';
 import './Item.css';
 
 export default class ItemSection {
-  constructor({ $target, initialState, addItem, removeItem }) {
+  constructor({ $target, initialState, addItem, removeItem, setCheck }) {
     $target.innerHTML = html;
 
     this.$list = $target.querySelector('.item-section__list');
     this.$addButton = $target.querySelector('.item-section__add-button');
     this.addItem = addItem;
     this.removeItem = removeItem;
+    this.setCheck = setCheck;
 
     this.state = initialState;
     this.render();
@@ -29,6 +30,13 @@ export default class ItemSection {
         const key = Number(e.target.closest('li')?.getAttribute('data-key'));
         if (isNaN(key)) return;
         this.removeItem(key);
+      }
+
+      // 체크박스 이벤트
+      if (e.target.closest('.item-section__item-checkbox')) {
+        const key = Number(e.target.closest('li')?.getAttribute('data-key'));
+        if (isNaN(key)) return;
+        this.setCheck(key, e.target.checked);
       }
     });
   }

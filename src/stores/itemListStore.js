@@ -22,6 +22,7 @@ class ItemListStore {
     }
 
     const nextId = itemIdStorage.getItemId();
+
     const newItem = {
       key: nextId,
       value: '',
@@ -30,14 +31,18 @@ class ItemListStore {
     };
 
     itemIdStorage.setItemId(nextId + 1);
-    
+
     const nextState = [...state, newItem];
     this.setState(nextState);
-    return newItem;
   }
 
   removeItem(key) {
     const nextState = this.state.filter(item => item.key !== key);
+    this.setState(nextState);
+  }
+
+  setCheck(key, checked) {
+    const nextState = this.state.map(item => (item.key === key ? { ...item, checked } : item));
     this.setState(nextState);
   }
 }
