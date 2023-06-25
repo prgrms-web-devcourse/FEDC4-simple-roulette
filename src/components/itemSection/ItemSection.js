@@ -56,7 +56,7 @@ export default class ItemSection {
       if (e.target.closest('.item-section__item-name-input')) this.setValue(key, e.target.value);
 
       // 비율 입력 이벤트
-      if (e.target.closest('.item-section__item-ratio')) this.setRatio(key, e.target.value);
+      if (e.target.closest('.item-section__item-ratio')) this.setRatio(key, Number(e.target.value) || 0);
     });
 
     this.$list.addEventListener('input', e => {
