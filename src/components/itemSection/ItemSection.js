@@ -8,13 +8,15 @@ export default class ItemSection {
 
     this.$list = $target.querySelector('.item-section__list');
     this.$addButton = $target.querySelector('.item-section__add-button');
+    this.$count = $target.querySelector('.item-section__item-count');
+
+    this.state = initialState;
     this.addItem = addItem;
     this.removeItem = removeItem;
     this.setCheck = setCheck;
     this.setValue = setValue;
     this.setRatio = setRatio;
 
-    this.state = initialState;
     this.render();
     this.initEvents();
   }
@@ -90,6 +92,7 @@ export default class ItemSection {
       </li>
     `;
 
+    this.$count.innerHTML = `${state.length} / 10`;
     this.$list.innerHTML = `${state.map(listItem).join('')}`;
   }
 }
