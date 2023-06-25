@@ -50,6 +50,11 @@ class ItemListStore {
     const nextState = this.state.map(item => (item.key === key ? { ...item, value } : item));
     this.setState(nextState);
   }
+
+  setRatio(key, ratio) {
+    const nextState = this.state.map(item => (item.key === key ? { ...item, ratio } : item));
+    this.setState(nextState);
+  }
 }
 
 export default ItemListStore;

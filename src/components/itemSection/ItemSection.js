@@ -3,7 +3,7 @@ import './ItemSection.css';
 import './Item.css';
 
 export default class ItemSection {
-  constructor({ $target, initialState, addItem, removeItem, setCheck, setValue }) {
+  constructor({ $target, initialState, addItem, removeItem, setCheck, setValue, setRatio }) {
     $target.innerHTML = html;
 
     this.$list = $target.querySelector('.item-section__list');
@@ -12,6 +12,7 @@ export default class ItemSection {
     this.removeItem = removeItem;
     this.setCheck = setCheck;
     this.setValue = setValue;
+    this.setRatio = setRatio;
 
     this.state = initialState;
     this.render();
@@ -43,6 +44,9 @@ export default class ItemSection {
 
       // 이름 입력 이벤트
       if (e.target.closest('.item-section__item-name-input')) this.setValue(key, e.target.value);
+
+      // 비율 입력 이벤트
+      if (e.target.closest('.item-section__item-ratio')) this.setRatio(key, e.target.value);
     });
   }
 
