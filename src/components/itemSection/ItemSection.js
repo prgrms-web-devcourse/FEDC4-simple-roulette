@@ -48,6 +48,15 @@ export default class ItemSection {
       // 비율 입력 이벤트
       if (e.target.closest('.item-section__item-ratio')) this.setRatio(key, e.target.value);
     });
+
+    this.$list.addEventListener('input', e => {
+      const key = Number(e.target.closest('li')?.getAttribute('data-key'));
+      if (isNaN(key)) return;
+
+      // 비율에 숫자만 입력 가능
+      const $ratio = e.target.closest('.item-section__item-ratio');
+      if ($ratio) $ratio.value = $ratio.value.replace(/[^0-9.]/g, '');
+    });
   }
 
   render() {
