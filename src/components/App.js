@@ -14,14 +14,20 @@ export default class App {
   }
 
   initialComponents() {
+    const { itemListStore } = this;
+
     new Header({ $target: document.querySelector('#header') });
 
     const itemSection = new ItemSection({
       $target: document.querySelector('.item-section'),
-      initialState: this.itemListStore.state,
+      initialState: itemListStore.state,
       addItem: () => {
-        const newItem = this.itemListStore.addItem();
-        itemSection.setState([...itemSection.state, newItem]);
+        itemListStore.addItem();
+        itemSection.setState(itemListStore.state);
+      },
+      removeItem: key => {
+        itemListStore.removeItem(key);
+        itemSection.setState(itemListStore.state);
       },
     });
 

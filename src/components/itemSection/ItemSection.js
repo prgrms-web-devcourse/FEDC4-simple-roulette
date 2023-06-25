@@ -3,12 +3,13 @@ import './ItemSection.css';
 import './Item.css';
 
 export default class ItemSection {
-  constructor({ $target, initialState, addItem }) {
+  constructor({ $target, initialState, addItem, removeItem }) {
     $target.innerHTML = html;
 
     this.$list = $target.querySelector('.item-section__list');
     this.$addButton = $target.querySelector('.item-section__add-button');
     this.addItem = addItem;
+    this.removeItem = removeItem;
 
     this.state = initialState;
     this.render();
@@ -22,6 +23,14 @@ export default class ItemSection {
 
   initEvents() {
     this.$addButton.addEventListener('click', this.addItem);
+    this.$list.addEventListener('click', e => {
+      // 삭제 이벤트
+      if (e.target.closest('.item-section__item-remove-button')) {
+        const key = Number(e.target.closest('li')?.getAttribute('data-key'));
+        if (isNaN(key)) return;
+        this.removeItem(key);
+      }
+    });
   }
 
   render() {
@@ -31,7 +40,7 @@ export default class ItemSection {
       <li class="item-section__item" data-key="${key}">
         <input class="item-section__item-checkbox" type="checkbox" ${checked ? 'checked' : ''} />
         <div class="item-section__item-name">
-          <span class="item-section__item-name-index">${index}</span>
+          <span class="item-section__item-name-index">${index + 1}</span>
           <input
             class="item-section__item-name-input"
             placeholder="항목 이름"
