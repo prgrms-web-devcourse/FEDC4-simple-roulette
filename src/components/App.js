@@ -2,22 +2,31 @@ import Header from './header/Header.js';
 import ItemSection from './itemSection/ItemSection.js';
 import RoulletSection from './roulletSection/RoulletSection.js';
 import RoulletHistorySection from './roulletHistorySection/RoulletHistorySection.js';
+import ItemListStore from '../stores/itemListStore.js';
 
 export default class App {
-  constructor({ $target, initialState }) {
-    this.state = initialState;
+  constructor({ $target }) {
+    this.$target = $target;
+    this.itemListStore = new ItemListStore();
 
-    new Header({ $target: document.querySelector('#header') });
-    new ItemSection({ $target: document.querySelector('.item-section') });
-    new RoulletSection({ $target: document.querySelector('.roullet-section') });
-    new RoulletHistorySection({ $target: document.querySelector('.roullet-history-section') });
-
+    this.initialComponents();
     this.render();
   }
 
-  setState(nextState) {
-    this.state = nextState;
-    this.render();
+  initialComponents() {
+    new Header({ $target: document.querySelector('#header') });
+
+    const itemSection = new ItemSection({
+      $target: document.querySelector('.item-section'),
+      initialState: this.itemListStore.state,
+      addItem: () => {
+        const newItem = this.itemListStore.addItem();
+        itemSection.setState([...itemSection.state, newItem]);
+      },
+    });
+
+    new RoulletSection({ $target: document.querySelector('.roullet-section') });
+    new RoulletHistorySection({ $target: document.querySelector('.roullet-history-section') });
   }
 
   render() {}
