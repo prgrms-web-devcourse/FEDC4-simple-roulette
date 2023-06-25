@@ -1,6 +1,17 @@
 import ItemListStorage from '../utils/itemListStorage.js';
 import ItemIdStorage from '../utils/itemIdStorage.js';
 
+export const defaultItemList = [
+  {
+    key: 0,
+    value: '',
+    checked: true,
+    ratio: 1,
+  },
+];
+
+export const defaultItemId = 1;
+
 class ItemListStore {
   constructor() {
     this.itemListStorage = new ItemListStorage();
@@ -14,10 +25,9 @@ class ItemListStore {
   }
 
   refreshList() {
-    const nextState = [];
-    this.state = nextState;
-    this.itemListStorage.setLists(nextState);
-    this.itemIdStorage.setItemId(0);
+    this.state = defaultItemList;
+    this.itemListStorage.setLists(defaultItemList);
+    this.itemIdStorage.setItemId(defaultItemId);
   }
 
   addItem() {

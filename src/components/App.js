@@ -27,6 +27,7 @@ export default class App {
       },
       removeItem: key => {
         itemListStore.removeItem(key);
+        if (itemListStore.state.length === 0) itemListStore.refreshList();
         this.render();
       },
       setCheck: (key, checked) => {
