@@ -45,6 +45,11 @@ class ItemListStore {
     const nextState = this.state.map(item => (item.key === key ? { ...item, checked } : item));
     this.setState(nextState);
   }
+
+  setValue(key, value) {
+    const nextState = this.state.map(item => (item.key === key ? { ...item, value } : item));
+    this.setState(nextState);
+  }
 }
 
 export default ItemListStore;

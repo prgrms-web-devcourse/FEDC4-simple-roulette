@@ -32,6 +32,10 @@ export default class App {
       setCheck: (key, checked) => {
         itemListStore.setCheck(key, checked);
         itemSection.setState(itemListStore.state);
+      },
+      setValue: (key, value) => {
+        itemListStore.setValue(key, value);
+        itemSection.setState(itemListStore.state);
       }
     });
 

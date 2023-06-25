@@ -3,7 +3,7 @@ import './ItemSection.css';
 import './Item.css';
 
 export default class ItemSection {
-  constructor({ $target, initialState, addItem, removeItem, setCheck }) {
+  constructor({ $target, initialState, addItem, removeItem, setCheck, setValue }) {
     $target.innerHTML = html;
 
     this.$list = $target.querySelector('.item-section__list');
@@ -11,6 +11,7 @@ export default class ItemSection {
     this.addItem = addItem;
     this.removeItem = removeItem;
     this.setCheck = setCheck;
+    this.setValue = setValue;
 
     this.state = initialState;
     this.render();
@@ -24,20 +25,24 @@ export default class ItemSection {
 
   initEvents() {
     this.$addButton.addEventListener('click', this.addItem);
+
     this.$list.addEventListener('click', e => {
+      const key = Number(e.target.closest('li')?.getAttribute('data-key'));
+      if (isNaN(key)) return;
+
       // 삭제 이벤트
-      if (e.target.closest('.item-section__item-remove-button')) {
-        const key = Number(e.target.closest('li')?.getAttribute('data-key'));
-        if (isNaN(key)) return;
-        this.removeItem(key);
-      }
+      if (e.target.closest('.item-section__item-remove-button')) this.removeItem(key);
 
       // 체크박스 이벤트
-      if (e.target.closest('.item-section__item-checkbox')) {
-        const key = Number(e.target.closest('li')?.getAttribute('data-key'));
-        if (isNaN(key)) return;
-        this.setCheck(key, e.target.checked);
-      }
+      if (e.target.closest('.item-section__item-checkbox')) this.setCheck(key, e.target.checked);
+    });
+
+    this.$list.addEventListener('focusout', e => {
+      const key = Number(e.target.closest('li')?.getAttribute('data-key'));
+      if (isNaN(key)) return;
+
+      // 이름 입력 이벤트
+      if (e.target.closest('.item-section__item-name-input')) this.setValue(key, e.target.value);
     });
   }
 
