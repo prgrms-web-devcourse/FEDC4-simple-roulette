@@ -25,6 +25,9 @@ class ItemListStore {
   }
 
   refreshList() {
+    const confirmation = confirm('정말로 모든 항목을 초기화 하시겠습니까?');
+    if (!confirmation) return;
+    
     this.state = defaultItemList;
     this.itemListStorage.setLists(defaultItemList);
     this.itemIdStorage.setItemId(defaultItemId);

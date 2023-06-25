@@ -43,10 +43,7 @@ export default class ItemSection {
     });
 
     // 초기화 이벤트
-    this.$refreshButton.addEventListener('click', () => {
-      const confirmation = confirm('정말로 모든 항목을 초기화 하시겠습니까?');
-      if (confirmation) this.refreshList();
-    });
+    this.$refreshButton.addEventListener('click', this.refreshList);
 
     this.$list.addEventListener('focusout', e => {
       const key = Number(e.target.closest('li')?.getAttribute('data-key'));
