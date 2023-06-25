@@ -21,7 +21,7 @@ export const storage = (function (storage) {
     }
   };
 
-  const clearItem = keyword => {
+  const clearItem = (keyword) => {
     try {
       storage.removeItem(keyword);
     } catch (e) {
