@@ -3,12 +3,13 @@ import './ItemSection.css';
 import './Item.css';
 
 export default class ItemSection {
-  constructor({ $target, initialState, addItem, removeItem, setCheck, setValue, setRatio }) {
+  constructor({ $target, initialState, addItem, removeItem, setCheck, setValue, setRatio, refreshList }) {
     $target.innerHTML = html;
 
     this.$list = $target.querySelector('.item-section__list');
-    this.$addButton = $target.querySelector('.item-section__add-button');
     this.$count = $target.querySelector('.item-section__item-count');
+    this.$addButton = $target.querySelector('.item-section__add-button');
+    this.$refreshButton = $target.querySelector('.item-section__refresh-button');
 
     this.state = initialState;
     this.addItem = addItem;
@@ -16,6 +17,7 @@ export default class ItemSection {
     this.setCheck = setCheck;
     this.setValue = setValue;
     this.setRatio = setRatio;
+    this.refreshList = refreshList;
 
     this.render();
     this.initEvents();
@@ -38,6 +40,12 @@ export default class ItemSection {
 
       // 체크박스 이벤트
       if (e.target.closest('.item-section__item-checkbox')) this.setCheck(key, e.target.checked);
+    });
+
+    // 초기화 이벤트
+    this.$refreshButton.addEventListener('click', () => {
+      const confirmation = confirm('정말로 모든 항목을 초기화 하시겠습니까?');
+      if (confirmation) this.refreshList();
     });
 
     this.$list.addEventListener('focusout', e => {

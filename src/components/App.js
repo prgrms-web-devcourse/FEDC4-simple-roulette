@@ -41,6 +41,10 @@ export default class App {
         itemListStore.setRatio(key, ratio);
         itemSection.setState(itemListStore.state);
       },
+      refreshList: () => {
+        itemListStore.refreshList();
+        itemSection.setState(itemListStore.state);
+      }
     });
 
     new RoulletSection({ $target: document.querySelector('.roullet-section') });

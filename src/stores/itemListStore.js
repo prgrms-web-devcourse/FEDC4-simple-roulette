@@ -13,6 +13,13 @@ class ItemListStore {
     this.itemListStorage.setLists(nextState);
   }
 
+  refreshList() {
+    const nextState = [];
+    this.state = nextState;
+    this.itemListStorage.setLists(nextState);
+    this.itemIdStorage.setItemId(0);
+  }
+
   addItem() {
     const { itemIdStorage, state } = this;
 
