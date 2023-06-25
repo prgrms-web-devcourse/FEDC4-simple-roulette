@@ -18,38 +18,42 @@ export default class App {
 
     new Header({ $target: document.querySelector('#header') });
 
-    const itemSection = new ItemSection({
+    this.itemSection = new ItemSection({
       $target: document.querySelector('.item-section'),
       initialState: itemListStore.state,
       addItem: () => {
         itemListStore.addItem();
-        itemSection.setState(itemListStore.state);
+        this.render();
       },
       removeItem: key => {
         itemListStore.removeItem(key);
-        itemSection.setState(itemListStore.state);
+        this.render();
       },
       setCheck: (key, checked) => {
         itemListStore.setCheck(key, checked);
-        itemSection.setState(itemListStore.state);
+        this.render();
       },
       setValue: (key, value) => {
         itemListStore.setValue(key, value);
-        itemSection.setState(itemListStore.state);
+        this.render();
       },
       setRatio: (key, ratio) => {
         itemListStore.setRatio(key, ratio);
-        itemSection.setState(itemListStore.state);
+        this.render();
       },
       refreshList: () => {
         itemListStore.refreshList();
-        itemSection.setState(itemListStore.state);
-      }
+        this.render();
+      },
     });
 
     new RoulletSection({ $target: document.querySelector('.roullet-section') });
     new RoulletHistorySection({ $target: document.querySelector('.roullet-history-section') });
   }
 
-  render() {}
+  render() {
+    const { itemSection, itemListStore } = this;
+
+    itemSection.setState(itemListStore.state);
+  }
 }
