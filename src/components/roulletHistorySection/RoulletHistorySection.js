@@ -13,16 +13,28 @@ export default class RoulletHistorySection {
     this.resultList = document.querySelector(".results-section");
     this.clearBtn = this.modal.querySelector(".clear-btn");
 
-    this.openButton.addEventListener("click", this.openModal.bind(this));
-    this.closeBtn.addEventListener("click", this.closeModal.bind(this));
-    this.overlay.addEventListener("click", this.closeModal.bind(this));
-    this.clearBtn.addEventListener("click", clearHistory);
+    $target.addEventListener("click", this.handleEvent.bind(this));
   }
 
   setState = (nextState) => {
     this.state = nextState;
     this.render();
   };
+
+  handleEvent(event) {
+    const { target } = event;
+
+    if (target.id === "open-modal-btn") {
+      this.openModal();
+    } else if (
+      target.classList.contains("history-modal_overlay") ||
+      target.tagName === "BUTTON"
+    ) {
+      this.closeModal();
+    } else if (target.classList.contains("clear-btn")) {
+      clearHistory();
+    }
+  }
 
   openModal() {
     // 모달 열기
