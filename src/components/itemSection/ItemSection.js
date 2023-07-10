@@ -31,6 +31,10 @@ export default class ItemSection {
   initEvents() {
     this.$addButton.addEventListener('click', this.addItem);
 
+    // 초기화 이벤트
+    this.$refreshButton.addEventListener('click', this.refreshList);
+
+    // 아이템 클릭 이벤트
     this.$list.addEventListener('click', e => {
       const key = Number(e.target.closest('li')?.getAttribute('data-key'));
       if (isNaN(key)) return;
@@ -42,10 +46,8 @@ export default class ItemSection {
       if (e.target.closest('.item-section__item-checkbox')) this.setCheck(key, e.target.checked);
     });
 
-    // 초기화 이벤트
-    this.$refreshButton.addEventListener('click', this.refreshList);
-
-    this.$list.addEventListener('focusout', e => {
+    // 아이템 입력 이벤트
+    this.$list.addEventListener('input', e => {
       const key = Number(e.target.closest('li')?.getAttribute('data-key'));
       if (isNaN(key)) return;
 
@@ -53,16 +55,12 @@ export default class ItemSection {
       if (e.target.closest('.item-section__item-name-input')) this.setValue(key, e.target.value);
 
       // 비율 입력 이벤트
-      if (e.target.closest('.item-section__item-ratio')) this.setRatio(key, Number(e.target.value) || 0);
-    });
-
-    this.$list.addEventListener('input', e => {
-      const key = Number(e.target.closest('li')?.getAttribute('data-key'));
-      if (isNaN(key)) return;
-
-      // 비율에 숫자만 입력 가능
       const $ratio = e.target.closest('.item-section__item-ratio');
-      if ($ratio) $ratio.value = $ratio.value.replace(/[^0-9.]/g, '');
+      if ($ratio) {
+        const nextValue = Number($ratio.value.replace(/[^0-9.]/g, '')) || 0;
+        this.setRatio(key, nextValue);
+        $ratio.value = nextValue;
+      }
     });
   }
 

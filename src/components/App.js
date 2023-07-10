@@ -32,15 +32,12 @@ export default class App {
       },
       setCheck: (key, checked) => {
         itemListStore.setCheck(key, checked);
-        this.render();
       },
       setValue: (key, value) => {
         itemListStore.setValue(key, value);
-        this.render();
       },
       setRatio: (key, ratio) => {
         itemListStore.setRatio(key, ratio);
-        this.render();
       },
       refreshList: () => {
         itemListStore.refreshList();
