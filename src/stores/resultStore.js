@@ -1,9 +1,9 @@
-import ResultStorage from "../utils/resultStorage.js";
+import { storage } from "../utils/storage.js";
+import { RESULTS } from "../constants/storageKeys.js";
 
 class ResultsStore {
   constructor() {
-    this.resultStorage = new ResultStorage();
-    const results = this.resultStorage.getResults();
+    const results = storage.getItem(RESULTS, []);
     this.state = this.makeResultsStoreState(results);
   }
 
@@ -21,7 +21,7 @@ class ResultsStore {
     const removeConfirm = confirm("결과 내역을 전체 삭제하시겠습니까?");
     if (removeConfirm) {
       this.setState([]);
-      this.resultStorage.clearResults();
+      storage.clearItem(RESULTS);
     } else {
       alert("결과 내역이 삭제되지 않았습니다!");
     }
