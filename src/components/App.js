@@ -2,23 +2,56 @@ import Header from './header/Header.js';
 import ItemSection from './itemSection/ItemSection.js';
 import RoulletSection from './roulletSection/RoulletSection.js';
 import RoulletHistorySection from './roulletHistorySection/RoulletHistorySection.js';
+import ItemListStore from '../stores/itemListStore.js';
 
 export default class App {
-  constructor({ $target, initialState }) {
-    this.state = initialState;
+  constructor({ $target }) {
+    this.$target = $target;
+    this.itemListStore = new ItemListStore();
+
+    this.initialComponents();
+    this.render();
+  }
+
+  initialComponents() {
+    const { itemListStore } = this;
 
     new Header({ $target: document.querySelector('#header') });
-    new ItemSection({ $target: document.querySelector('.item-section') });
+
+    this.itemSection = new ItemSection({
+      $target: document.querySelector('.item-section'),
+      initialState: itemListStore.state,
+      addItem: () => {
+        itemListStore.addItem();
+        this.render();
+      },
+      removeItem: key => {
+        itemListStore.removeItem(key);
+        if (itemListStore.state.length === 0) itemListStore.refreshList();
+        this.render();
+      },
+      setCheck: (key, checked) => {
+        itemListStore.setCheck(key, checked);
+      },
+      setValue: (key, value) => {
+        itemListStore.setValue(key, value);
+      },
+      setRatio: (key, ratio) => {
+        itemListStore.setRatio(key, ratio);
+      },
+      refreshList: () => {
+        itemListStore.refreshList();
+        this.render();
+      },
+    });
+
     new RoulletSection({ $target: document.querySelector('.roullet-section') });
     new RoulletHistorySection({ $target: document.querySelector('.roullet-history-section') });
-
-    this.render();
   }
 
-  setState(nextState) {
-    this.state = nextState;
-    this.render();
-  }
+  render() {
+    const { itemSection, itemListStore } = this;
 
-  render() {}
+    itemSection.setState(itemListStore.state);
+  }
 }
