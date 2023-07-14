@@ -16,7 +16,7 @@ export default class App {
   }
   
   initialComponents() {
-    const { itemListStore } = this;
+    const { itemListStore, resultsStore } = this;
 
     new Header({ $target: document.querySelector('#header') });
 
@@ -47,7 +47,12 @@ export default class App {
       },
     });
 
-    new RoulletSection({ $target: document.querySelector('.roullet-section') });
+    new RoulletSection({ 
+      $target: document.querySelector('.roullet-section'), 
+      initialState: itemListStore.state,
+      addHistory : ()=>{
+      }
+    });
     
     this.roulletHistorySection = new RoulletHistorySection({
       $target: this.$target.querySelector(".roullet-history-section"),

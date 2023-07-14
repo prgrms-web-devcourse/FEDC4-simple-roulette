@@ -13,7 +13,7 @@ export default class RandomItemBtn{
         this.getResult = getResult
         this.setResult = setResult
         this.$canvas = $canvas
-        this.render()
+        this.initEvent()
     }
 
     setState(nextState){
@@ -61,8 +61,7 @@ export default class RandomItemBtn{
         }
         }
 
-        render(){
-            (() => {
+        initEvent(){
                 let isClicked = false;
                 $button.addEventListener("click", () => {
                 if (!isClicked) {
@@ -73,7 +72,6 @@ export default class RandomItemBtn{
                     }, 3200);
                 }
                 });
-            })();
+            }
         }
 
-}

@@ -4,7 +4,6 @@ export default class RoulletSection {
     $wrapper.insertAdjacentHTML("afterbegin", html);
     this.$button = document.querySelector(".start-button");
     this.$canvas = document.querySelector(".roullet-roll");
-    this.lists = storage.getItem("item_lists", []);
 
     this.$target = $target;
 
@@ -13,6 +12,8 @@ export default class RoulletSection {
   }
 
   initComponent() {
+    const {lists} = this.state
+    
     this.Roullet = new RoulletCanvas({
       $canvas,
       initialState: lists,

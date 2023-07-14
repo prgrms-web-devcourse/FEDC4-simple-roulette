@@ -1,6 +1,9 @@
+import { CLOLOR } from "../../constants/colors.js";
+
 export default class RoulletCanvas {
   constructor({ $canvas, initialState, sumRatio }) {
     this.state = initialState;
+    this.sumRatio =sumRatio
 
     this.circleState = {
       ctx: $canvas.getContext("2d"),
@@ -9,21 +12,22 @@ export default class RoulletCanvas {
       radius: $canvas.width / 2 - 10,
     };
 
-    this.render(this.circleState);
+    this.render();
   }
 
   setState(nextState) {
     this.state = nextState;
-    this.render(this.circleState);
+    this.render();
   }
 
-  render({ ctx, centerX, centerY, radius }) {
+  render() {
+    const { ctx, centerX, centerY, radius } = this.circleState 
     // 룰렛 원 영역
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI); // 원의중심 x좌표, 원의 중심 y좌표, 원의 반지름, 원호의 시작 각도, 원호의 종료 각도
     ctx.strokeStyle = "#DBDBDB";
 
     // 룰렛 부채꼴 영역
-    const sum = sumRatio(this.state);
+    const sum = this.sumRatio(this.state);
     let startAngle = -(1 / 2) * Math.PI;
     for (const { key, value, checked, ratio } of this.state) {
       if (!checked) continue;
@@ -36,7 +40,7 @@ export default class RoulletCanvas {
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
       ctx.closePath();
-      ctx.fillStyle = colors[key - 1];
+      ctx.fillStyle = CLOLOR[key - 1];
       ctx.fill();
       ctx.stroke();
 
