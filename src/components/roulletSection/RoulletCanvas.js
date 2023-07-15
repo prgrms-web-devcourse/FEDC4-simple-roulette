@@ -56,7 +56,11 @@ export default class RoulletCanvas {
       ctx.translate(textX, textY); // 캔버스의 원점을 텍스트 위치로 이동
       ctx.rotate(textAngle); // 텍스트를 대각선으로 회전
 
-      const fontSize = angle < 18 ? angle : 18;
+      let fontSize = 25 - value.length; //글자 수에 따라서 폰트 크기 조절
+      if (fontSize > angle) {
+        fontSize = angle < 18 ? angle : fontSize; //비율에 따라서 폰트 크기 조절
+      }
+
       ctx.font = `bold ${fontSize}px Raleway`;
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
