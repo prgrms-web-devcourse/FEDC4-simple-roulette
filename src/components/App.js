@@ -54,7 +54,8 @@ export default class App {
       $target: document.querySelector(".roullet-section"),
       initialState: itemListStore.state,
       addHistory: (results) => {
-        console.log(results);
+        resultsStore.setState([...resultsStore.state.results, results]);
+        this.render();
       },
     });
 
@@ -69,12 +70,19 @@ export default class App {
   }
 
   render() {
-    const { itemSection, itemListStore, roulletSection } = this;
+    const {
+      itemSection,
+      itemListStore,
+      roulletSection,
+      resultsStore,
+      roulletHistorySection,
+    } = this;
+
     itemSection.setState(itemListStore.state);
     roulletSection.setState(itemListStore.state);
 
-    const resultState = this.resultsStore.state.results; //스토어에서 state가져오기
-    this.roulletHistorySection.setState(resultState); //state 재설정
+    const resultState = resultsStore.state.results; //스토어에서 state가져오기
+    roulletHistorySection.setState(resultState); //state 재설정
   }
 
   roulletRender() {
