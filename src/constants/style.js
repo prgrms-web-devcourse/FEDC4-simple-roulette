@@ -10,3 +10,7 @@ export const CLOLOR = [
   "#022FD1",
   "#0128B0",
 ];
+
+export const LENGTH_SIZE = 25;
+
+export const ANGLE_SIZE = 18;

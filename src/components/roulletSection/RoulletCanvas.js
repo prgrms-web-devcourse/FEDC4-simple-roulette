@@ -1,4 +1,4 @@
-import { CLOLOR } from "../../constants/colors.js";
+import { CLOLOR, LENGTH_SIZE, ANGLE_SIZE } from "../../constants/style.js";
 
 export default class RoulletCanvas {
   constructor({ $target, initialState }) {
@@ -31,8 +31,15 @@ export default class RoulletCanvas {
       0
     );
     let startAngle = -(1 / 2) * Math.PI;
-    for (const { key, value, checked, ratio } of this.state) {
+
+    let colorindex = -1;
+    for (const { value, checked, ratio } of this.state) {
+      //forEach로 진행 안한 이유 : checked 진행 된 배열 index를 세는 변수를 따로 만들어 줘야함
+      //따라서 of문으로 진행하는게 더 깔끔하다고 생각
+      //확인 후 삭제 부탁드립니다.
+
       if (!checked) continue;
+      colorindex++;
       const percent = (ratio / totalRatio) * 100;
       const angle = (360 * percent) / 100;
       const radian = (angle * Math.PI) / 180;
@@ -42,7 +49,7 @@ export default class RoulletCanvas {
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
       ctx.closePath();
-      ctx.fillStyle = CLOLOR[key];
+      ctx.fillStyle = CLOLOR[colorindex];
       ctx.fill();
       ctx.stroke();
 
@@ -56,9 +63,9 @@ export default class RoulletCanvas {
       ctx.translate(textX, textY); // 캔버스의 원점을 텍스트 위치로 이동
       ctx.rotate(textAngle); // 텍스트를 대각선으로 회전
 
-      let fontSize = 25 - value.length; //글자 수에 따라서 폰트 크기 조절
+      let fontSize = LENGTH_SIZE - value.length; //글자 수에 따라서 폰트 크기 조절
       if (fontSize > angle) {
-        fontSize = angle < 18 ? angle : fontSize; //비율에 따라서 폰트 크기 조절
+        fontSize = angle < ANGLE_SIZE ? angle : fontSize; //비율에 따라서 폰트 크기 조절
       }
 
       ctx.font = `bold ${fontSize}px Raleway`;
