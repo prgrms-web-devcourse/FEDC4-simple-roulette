@@ -1,39 +1,31 @@
+import html from "./Roullet-section.html";
+import "./Roullet-section.css";
+import RoulletCanvas from "./RoulletCanvas.js";
+import RandomItemBtn from "./RoulletRandomItemBtn.js";
 export default class RoulletSection {
-  constructor({ $target, initialState }) {
-    this.$wrapper = document.querySelector(".roullet-section");
-    $wrapper.insertAdjacentHTML("afterbegin", html);
+  constructor({ $target, initialState, addHistory }) {
+    $target.insertAdjacentHTML("afterbegin", html);
     this.$button = document.querySelector(".start-button");
     this.$canvas = document.querySelector(".roullet-roll");
 
-    this.$target = $target;
+    this.addHistory = addHistory;
 
     this.state = initialState;
     this.initComponent();
   }
 
   initComponent() {
-    const {lists} = this.state
-    
+    const { $canvas, $button, addHistory, state } = this;
+
     this.Roullet = new RoulletCanvas({
-      $canvas,
-      initialState: lists,
-      sumRatio: (lists) =>
-        lists.reduce(
-          (acc, { ratio, checked }) => (!checked ? acc : acc + ratio),
-          0
-        ),
+      $target: $canvas,
+      initialState: state,
     });
 
     this.StartBtn = new RandomItemBtn({
-      $button,
-      initialState: lists,
-      sumRatio: (lists) =>
-        lists.reduce(
-          (acc, { ratio, checked }) => (!checked ? acc : acc + ratio),
-          0
-        ),
-      setResult: storage.setItem.bind(storage),
-      getResult: storage.getItem.bind(storage),
+      $target: $button,
+      initialState: state,
+      addHistory,
       $canvas,
     });
   }
@@ -41,7 +33,6 @@ export default class RoulletSection {
   setState(nextState) {
     this.state = nextState;
 
-    //수정 필**
     this.StartBtn.setState(nextState);
     this.Roullet.setState(nextState);
   }
