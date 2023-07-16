@@ -1,9 +1,10 @@
 export default class RandomItemBtn {
-  constructor({ $target, initialState, addHistory, $canvas }) {
+  constructor({ $target, initialState, addHistory, $canvas, getWinner}) {
     this.$target = $target;
     this.$canvas = $canvas;
     this.state = initialState;
     this.addHistory = addHistory;
+    this.getWinner = getWinner
 
     this.initEvent();
   }
@@ -26,7 +27,7 @@ export default class RandomItemBtn {
   }
 
   randomValue() {
-    const { state, rotate, addHistory } = this;
+    const { state, rotate, addHistory , getWinner} = this;
 
     const isValue = state.length > 0 && state.every(({ value }) => value);
 
@@ -45,6 +46,7 @@ export default class RandomItemBtn {
         if (randomValue < accumulatedRatio) {
           setTimeout(() => {
             addHistory(value);
+            getWinner(value)
           }, 3100);
           break;
         }
