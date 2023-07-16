@@ -12,6 +12,5 @@ export default class RoulletWinner{
 
     render(){
         this.$target.textContent = `${this.state} 결과 당첨!`
-        console.log(this.state.length)
     }
 }
