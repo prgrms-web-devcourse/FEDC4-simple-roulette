@@ -1,5 +1,3 @@
-import {LENGTH_SIZE} from "../../constants/style.js"
-
 export default class RoulletWinner{
     constructor({$target}){
         this.$target = $target
@@ -13,9 +11,7 @@ export default class RoulletWinner{
     }
 
     render(){
-        const resultFontSize = LENGTH_SIZE - this.state.length
-
         this.$target.textContent = `${this.state} 결과 당첨!`
-        this.$target.style.fontSize = resultFontSize + "px"
+        console.log(this.state.length)
     }
 }
