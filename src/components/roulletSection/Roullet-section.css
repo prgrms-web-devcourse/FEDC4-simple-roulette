@@ -6,6 +6,9 @@
 }
 
 .roullet-section__winner {
+  display: block;
+  width: 550px;
+  text-align: center;
   font-weight: 800;
   font-size: 25px;
   color: #5b71bd;
@@ -15,8 +18,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  width: 560px;
+  height: 560px;
   border-radius: 50%;
   background-color: rgba(192, 206, 194, 0.2);
   opacity: 90%;
@@ -24,8 +27,8 @@
 }
 
 .start-button {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   background-color: white;
   border-radius: 50%;
   border: none;
@@ -33,6 +36,7 @@
   cursor: pointer;
   font-weight: 600;
   position: absolute;
+  font-size: 16px;
 }
 
 .start-button:active {
