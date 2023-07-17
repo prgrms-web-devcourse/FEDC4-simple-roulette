@@ -77,6 +77,7 @@ export default class ItemSection {
             placeholder="항목 이름"
             type="text"
             value="${value}"
+            maxlength="20"
           />
         </div>
         <input
@@ -84,6 +85,7 @@ export default class ItemSection {
           placeholder="비율"
           type="text"
           value="${ratio}"
+          maxlength="20"
         />
         <span class="item-section__item-remove-button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20">
