@@ -5,6 +5,7 @@ export default class RoulletHistorySection {
   constructor({ $target, initialState, clearHistory }) {
     $target.innerHTML = html;
     this.state = initialState;
+    this.clearHistory = clearHistory;
 
     this.openButton = $target.querySelector("#open-modal-btn");
     this.modal = $target.querySelector(".history-modal");
@@ -26,13 +27,10 @@ export default class RoulletHistorySection {
 
     if (target.id === "open-modal-btn") {
       this.openModal();
-    } else if (
-      target.classList.contains("history-modal_overlay") ||
-      target.tagName === "BUTTON"
-    ) {
+    } else if (target.classList.contains("history-modal_overlay")) {
       this.closeModal();
     } else if (target.classList.contains("clear-btn")) {
-      clearHistory();
+      this.clearHistory();
     }
   }
 
