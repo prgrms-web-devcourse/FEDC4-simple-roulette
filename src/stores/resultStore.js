@@ -14,6 +14,7 @@ class ResultsStore {
   }
 
   setState(results) {
+    storage.setItem(RESULTS, JSON.stringify(results));
     this.state = this.makeResultsStoreState(results);
   }
 
