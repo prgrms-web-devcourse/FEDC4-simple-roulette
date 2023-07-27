@@ -31,6 +31,8 @@ export default class RoulletHistorySection {
       this.closeModal();
     } else if (target.classList.contains("clear-btn")) {
       this.clearHistory();
+    } else {
+      this.closeModal();
     }
   }
 
