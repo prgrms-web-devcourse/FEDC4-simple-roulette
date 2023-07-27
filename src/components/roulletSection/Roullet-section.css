@@ -7,7 +7,9 @@
 
 .roullet-section__winner {
   display: block;
-  width: 550px;
+  max-width: 25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-align: center;
   font-weight: 800;
   font-size: 25px;
@@ -18,8 +20,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 560px;
-  height: 560px;
   border-radius: 50%;
   background-color: rgba(192, 206, 194, 0.2);
   opacity: 90%;
@@ -27,8 +27,8 @@
 }
 
 .start-button {
-  width: 90px;
-  height: 90px;
+  width: 5.5rem;
+  height: 5.5rem;
   background-color: white;
   border-radius: 50%;
   border: none;

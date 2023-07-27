@@ -8,7 +8,7 @@
 .item-section__item input {
   height: 3em;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1em;
   text-align: center;
   transition: all 0.25s;
 }
@@ -18,12 +18,11 @@
 }
 
 .item-section__item-checkbox {
-  background-color: red;
   transform: scale(2);
 }
 
 .item-section__item-name {
-  flex-grow: 1;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 0 0.75em;
@@ -37,18 +36,22 @@
 }
 
 .item-section__item-name-index {
-  padding-right: 0.75em;
+  width: 2em;
+  display: inline-block;
+  padding-right: 0.25em;
   border-right: 1px solid #2A59FE;
 }
 
 .item-section__item-name-input {
-  flex-grow: 1;
+  width: 100%;
+  min-width: 3em;
   padding-left: 0.75em;
   border: none;
 }
 
 .item-section__item-ratio {
-  width: 6em;
+  min-width: 2em;
+  max-width: 6em;
   border: 1px solid rgba(118, 118, 118, 0.362);
 }
 
@@ -74,4 +77,10 @@
 
 .item-section__item-remove-button:hover svg path {
   fill: black;
+}
+
+@media screen and (max-width: 650px) {
+  .item-section__item {
+    gap: 1em;
+  }
 }
