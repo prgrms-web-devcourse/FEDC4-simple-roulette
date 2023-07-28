@@ -144,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // Module
-var code = "<h1>부트캠프 시작 3일만에 사이드 프로젝트 진행하기</h1>\n<p>지각은 싫어요</p>";
+var code = "<h1>럭키?! 언럭키!?</h1>\n<p>🍀 행운을 빌어요</p>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -1087,7 +1087,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(23), __webpack_require__.b);
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
-var code = "<p class=\"roullet-section__winner\"></p>\n\n<div class=\"roullet-section__roullet\">\n  <canvas class=\"roullet-roll\" width=\"550\" height=\"550\"></canvas>\n  <button class=\"start-button\">START</button>\n\n  <img class=\"roullet-arrow\" src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"arrow.svg\" />\n</div>\n";
+var code = "<p class=\"roullet-section__winner\"></p>\n\n<div class=\"roullet-section__roullet\">\n  <div class=\"roullet-roll-wrapper\">\n    <canvas class=\"roullet-roll\" width=\"550\" height=\"550\"></canvas>\n  </div>\n  <button class=\"start-button\">START</button>\n\n  <img class=\"roullet-arrow\" src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"arrow.svg\" />\n</div>\n";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -1221,6 +1221,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.roullet-section {
   background-color: rgba(192, 206, 194, 0.2);
   opacity: 90%;
   position: relative;
+}
+
+.roullet-roll-wrapper {
+  overflow: hidden;
 }
 
 .start-button {
