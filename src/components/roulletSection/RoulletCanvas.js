@@ -1,41 +1,46 @@
-function RoulletCanvas({ $canvas, initialState, sumRatio }) {
-  const colors = [
-    "#E4EAFF",
-    "#C2D0FF",
-    "#A1B5FE",
-    "#7F9BFE",
-    "#5D81FE",
-    "#3C66FD",
-    "#1A4CFD",
-    "#0237F3",
-    "#022FD1",
-    "#0128B0",
-  ];
-  this.state = initialState;
+import { CLOLOR, LENGTH_SIZE, ANGLE_SIZE } from "../../constants/style.js";
 
-  this.setState = (nextState) => {
+export default class RoulletCanvas {
+  constructor({ $target, initialState }) {
+    this.state = initialState;
+
+    this.circleState = {
+      ctx: $target.getContext("2d"),
+      centerX: $target.width / 2,
+      centerY: $target.height / 2,
+      radius: $target.width / 2 - 10,
+    };
+
+    this.render();
+  }
+
+  setState(nextState) {
     this.state = nextState;
-    this.render(this.circleState);
-  };
+    this.render();
+  }
 
-  this.circleState = {
-    ctx: $canvas.getContext("2d"),
-    centerX: $canvas.width / 2,
-    centerY: $canvas.height / 2,
-    radius: $canvas.width / 2 - 10,
-  };
-
-  this.render = ({ ctx, centerX, centerY, radius }) => {
+  render() {
+    const { ctx, centerX, centerY, radius } = this.circleState;
     // 룰렛 원 영역
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI); // 원의중심 x좌표, 원의 중심 y좌표, 원의 반지름, 원호의 시작 각도, 원호의 종료 각도
     ctx.strokeStyle = "#DBDBDB";
 
     // 룰렛 부채꼴 영역
-    const sum = sumRatio(this.state);
+    const totalRatio = this.state.reduce(
+      (acc, { ratio, checked }) => (!checked ? acc : acc + ratio),
+      0
+    );
     let startAngle = -(1 / 2) * Math.PI;
-    for (const { key, value, checked, ratio } of this.state) {
+
+    let colorindex = -1;
+    for (const { value, checked, ratio } of this.state) {
+      //forEach로 진행 안한 이유 : checked 진행 된 배열 index를 세는 변수를 따로 만들어 줘야함
+      //따라서 of문으로 진행하는게 더 깔끔하다고 생각
+      //확인 후 삭제 부탁드립니다.
+
       if (!checked) continue;
-      const percent = (ratio / sum) * 100;
+      colorindex++;
+      const percent = (ratio / totalRatio) * 100;
       const angle = (360 * percent) / 100;
       const radian = (angle * Math.PI) / 180;
       const endAngle = radian + startAngle;
@@ -44,7 +49,7 @@ function RoulletCanvas({ $canvas, initialState, sumRatio }) {
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
       ctx.closePath();
-      ctx.fillStyle = colors[key - 1];
+      ctx.fillStyle = CLOLOR[colorindex];
       ctx.fill();
       ctx.stroke();
 
@@ -58,7 +63,11 @@ function RoulletCanvas({ $canvas, initialState, sumRatio }) {
       ctx.translate(textX, textY); // 캔버스의 원점을 텍스트 위치로 이동
       ctx.rotate(textAngle); // 텍스트를 대각선으로 회전
 
-      const fontSize = angle < 18 ? angle : 18;
+      let fontSize = LENGTH_SIZE - value.length; //글자 수에 따라서 폰트 크기 조절
+      if (fontSize > angle) {
+        fontSize = angle < ANGLE_SIZE ? angle : fontSize; //비율에 따라서 폰트 크기 조절
+      }
+
       ctx.font = `bold ${fontSize}px Raleway`;
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
@@ -67,9 +76,5 @@ function RoulletCanvas({ $canvas, initialState, sumRatio }) {
 
       startAngle = endAngle;
     }
-  };
-
-  this.render(this.circleState);
+  }
 }
-
-export default RoulletCanvas;
