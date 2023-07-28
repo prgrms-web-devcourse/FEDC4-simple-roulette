@@ -26,6 +26,10 @@
   position: relative;
 }
 
+.roullet-roll-wrapper {
+  overflow: hidden;
+}
+
 .start-button {
   width: 5.5rem;
   height: 5.5rem;
