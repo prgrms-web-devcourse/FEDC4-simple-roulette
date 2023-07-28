@@ -1376,7 +1376,7 @@ const CLOLOR = [
   "#0128B0",
 ];
 
-const LENGTH_SIZE = 25;
+const LENGTH_SIZE = 30;
 
 const ANGLE_SIZE = 18;
 
