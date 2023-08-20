@@ -1,22 +1,15 @@
 {
-  "name": "webpack-study-2",
-  "version": "1.0.0",
-  "description": "",
+  "name": "fedc4-simple-roulette",
+  "version": "1.1.0",
+  "description": "simple roulette",
   "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
   "scripts": {
-    "bundle": "webpack",
-    "start": "webpack serve"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "css-loader": "^6.8.1",
-    "html-loader": "^4.2.0",
-    "html-webpack-plugin": "^5.5.3",
-    "style-loader": "^3.3.3",
-    "webpack": "^5.86.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
-  }
+  "license": "ISC"
 }

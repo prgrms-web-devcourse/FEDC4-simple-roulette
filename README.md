@@ -1,4 +1,20 @@
 # FEDC4-simple-roulette
+###  멤버
+<table>
+ <tr>
+    <td align="center"><a href="https://github.com/GBAJS754"><img src="https://avatars.githubusercontent.com/GBAJS754" width="130px;" alt=""></a></td>
+    <td align="center"><a href="https://github.com/cloud0406"><img src="https://avatars.githubusercontent.com/cloud0406" width="130px;" alt=""></a></td>
+    <td align="center"><a href="https://github.com/suehdn"><img src="https://avatars.githubusercontent.com/suehdn" width="130px;" alt=""></a></td>
+    <td align="center"><a href="https://github.com/bbearcookie"><img src="https://avatars.githubusercontent.com/bbearcookie" width="130px;" alt=""></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/GBAJS754"><b>김다은</b></a></td>
+    <td align="center"><a href="https://github.com/cloud0406"><b>김정호</b></a></td>
+    <td align="center"><a href="https://github.com/suehdn"><b>안혜수</b></a></td>
+    <td align="center"><a href="https://github.com/bbearcookie"><b>이상훈</b></a></td>
+  </tr>
+</table>
+
 ### ✅commit 규칙
 |   Type   |내용|
 |:--------:|---|
@@ -15,20 +31,3 @@
 |  Remove  |파일을 삭제하는 작업만 수행하는 경우|
 
 [참고](https://kdjun97.github.io/git-github/commit-convention/)
-
-## 실행 방법
-
-### 1. 패키지 설치
-```sh
-npm install
-```
-
-### 2-1. 파일 번들링
-```sh
-npm run bundle
-```
-
-### 2-2. 개발서버 실행
-```sh
-npm start
-```
