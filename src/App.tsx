@@ -1,5 +1,6 @@
 import Button from '@/components/Button';
 import Counter from '@/components/Counter';
+import BearCount from './components/BearCount';
 import { css } from '@emotion/react';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       </header>
       <Button css={css({ backgroundColor: 'yellow', color: 'black', width: '1000px' })}>버튼</Button>
       <Counter />
+      <BearCount />
     </div>
   );
 }
