@@ -24,7 +24,6 @@ function Counter({ defaultCount, onIncrease = () => {}, children }: Props) {
         onClick={handleIncrease}>
         증가
       </Button>
-      <Button css={css({ backgroundColor: 'yellow', color: 'black', width: '1000px' })}>버튼</Button>
     </div>
   );
 }

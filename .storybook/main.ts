@@ -14,6 +14,15 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {}
   },
+  babelDefault(config) {
+    return {
+      ...config,
+      presets: [
+        ...config.presets as [],
+        '@emotion/babel-preset-css-prop'
+      ]
+    }
+  },
   webpackFinal: async (config) => {
     if (config.resolve) {
       config.resolve.alias = {
