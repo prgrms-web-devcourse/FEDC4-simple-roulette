@@ -1,15 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from '@/components/Button';
+import { css } from '@emotion/react';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img
-          src={logo}
-          className="App-logo"
-          alt="logo"
-        />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -21,6 +16,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Button css={css({ backgroundColor: 'yellow', color: 'black', width: '1000px' })}>버튼</Button>
     </div>
   );
 }
