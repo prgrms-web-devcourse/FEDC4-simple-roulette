@@ -25,6 +25,8 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/triple-slash-reference": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/no-floating-promises": "warn"
+    "@typescript-eslint/no-floating-promises": "warn",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off"
   }
 }
