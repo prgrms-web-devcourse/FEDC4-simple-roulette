@@ -1,31 +1,12 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import { useState } from 'react';
+import { css } from '@emotion/react';
+import Button from '@/components/Button';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a
-          href="https://vitejs.dev"
-          target="_blank"
-          rel="noreferrer">
-          <img
-            className="logo"
-            alt="Vite logo"
-          />
-        </a>
-        <a
-          href="https://react.dev"
-          target="_blank"
-          rel="noreferrer">
-          <img
-            className="logo react"
-            alt="React logo"
-          />
-        </a>
-      </div>
       <h1>Vite + React</h1>
       <div className="card">
         <button
@@ -39,6 +20,8 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <Button>기본 스타일 버튼</Button>
+      <Button css={css({ backgroundColor: 'yellow', color: 'black', width: '1000px' })}>덮어쓴 버튼</Button>
     </>
   );
 }
