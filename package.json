@@ -1,17 +1,21 @@
 {
+  "homepage": "https://prgrms-web-devcourse.github.io/FEDC4-simple-roulette/index.html",
   "name": "webpack-study-2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "bundle": "webpack",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "predeploy": "npm run bundle",
+    "deploy": "gh-pages -d bundles"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.8.1",
+    "gh-pages": "^5.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
     "style-loader": "^3.3.3",
