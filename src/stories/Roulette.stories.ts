@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Roulette from '@/components/Roulette';
+import Roulette from '@/components/roulette';
 
 const meta = {
   title: 'Component/Roulette',

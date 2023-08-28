@@ -4,6 +4,11 @@ export interface Circle {
   radius: number;
 }
 
+export interface Ratio {
+  random: number;
+  total: number;
+}
+
 export interface ItemInfo {
   checked: boolean;
   value: string;
