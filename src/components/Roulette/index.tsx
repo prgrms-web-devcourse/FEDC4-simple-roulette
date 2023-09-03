@@ -1,10 +1,31 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
+import styled from '@emotion/styled';
 import { findRandomRatio, findItemByRatio } from './helpers';
 import type { ItemInfo, Circle, Ratio } from './types';
-import styled from '@emotion/styled';
 
 const ROTATE_DURATION = 2000; // 회전 시간
 const ROTATE_COUNT = 3; // 몇 바퀴 회전할 것인지
+const MAX_TEXT_LENGTH = 10; // 룰렛 아이템의 텍스트 최대 길이
+
+export const COLORS = [
+  '#fecaca',
+  '#fed7aa',
+  '#fde68a',
+  '#fef08a',
+  '#d9f99d',
+  '#bbf7d0',
+  '#a7f3d0',
+  '#99f6e4',
+  '#a5f3fc',
+  '#bae6fd',
+  '#bfdbfe',
+  '#c7d2fe',
+  '#ddd6fe',
+  '#e9d5ff',
+  '#f5d0fe',
+  '#fbcfe8',
+  '#fecdd3'
+];
 
 interface Props {
   items: ItemInfo[];
@@ -53,30 +74,46 @@ const Roulette = ({ items, colors }: Props) => {
     ({
       ctx,
       circle,
-      radian,
-      startAngle,
+      angle,
+      textAngle,
       text
     }: {
       ctx: CanvasRenderingContext2D;
       circle: Circle;
-      radian: number;
-      startAngle: number;
+      angle: number;
+      textAngle: number;
       text: string;
     }) => {
       const { centerX, centerY, radius } = circle;
 
-      const textAngle = startAngle + radian / 2;
       const textX = centerX + (radius / 2) * Math.cos(textAngle);
       const textY = centerY + (radius / 2) * Math.sin(textAngle);
+      let maxFontSize = 0;
+
+      if (angle > 60) {
+        maxFontSize = 2;
+      } else if (angle > 30) {
+        maxFontSize = 1.5;
+      } else if (angle > 15) {
+        maxFontSize = 1.25;
+      } else if (angle > 10) {
+        maxFontSize = 1;
+      } else if (angle > 5) {
+        maxFontSize = 0.75;
+      } else {
+        maxFontSize = 0.5;
+      }
+
+      const fontSize = Math.min(maxFontSize, MAX_TEXT_LENGTH / text.length);
 
       ctx.save(); // 현재 캔버스 상태 저장
       ctx.translate(textX, textY); // 캔버스의 원점을 텍스트 위치로 이동
       ctx.rotate(textAngle); // 텍스트를 대각선으로 회전
 
-      ctx.font = `bold 16px Raleway`;
       ctx.fillStyle = 'black';
       ctx.textAlign = 'center';
-      ctx.fillText(text, 0, 0); // 회전한 캔버스에 텍스트를 그림
+      ctx.font = `bold ${fontSize}rem Raleway`;
+      ctx.fillText(text, 15, 0); // 회전한 캔버스에 텍스트를 그림
       ctx.restore();
     },
     []
@@ -110,8 +147,8 @@ const Roulette = ({ items, colors }: Props) => {
         drawItemText({
           ctx,
           circle,
-          radian,
-          startAngle,
+          angle,
+          textAngle: startAngle + radian / 2,
           text: item.value
         });
 
@@ -220,8 +257,8 @@ const CanvasContainer = styled.div`
 `;
 
 const StartButton = styled.button`
-  width: 100px;
-  height: 100px;
+  width: 6.25rem;
+  height: 6.25rem;
   position: absolute;
   border: none;
   background: #ffffff;

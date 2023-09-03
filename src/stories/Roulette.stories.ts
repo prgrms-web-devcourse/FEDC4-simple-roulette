@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Roulette from '@/components/roulette';
+import Roulette, { COLORS } from '@/components/roulette';
 
 const meta = {
   title: 'Component/Roulette',
@@ -58,7 +58,7 @@ export const Default: Story = {
         ratio: 1
       }
     ],
-    colors: ['#E879F9', '#FB7185', '#4ADE80', '#22D3EE', '#818CF8', '#A5B4FC']
+    colors: COLORS
   }
 };
 
@@ -81,7 +81,7 @@ export const Three: Story = {
         ratio: 1
       }
     ],
-    colors: ['#E879F9', '#FB7185', '#4ADE80', '#22D3EE', '#818CF8', '#A5B4FC']
+    colors: COLORS
   }
 };
 
@@ -109,6 +109,97 @@ export const Four: Story = {
         ratio: 1
       }
     ],
-    colors: ['#E879F9', '#FB7185', '#4ADE80', '#22D3EE', '#818CF8', '#A5B4FC']
+    colors: COLORS
+  }
+};
+
+export const Ten: Story = {
+  args: {
+    items: [
+      {
+        checked: true,
+        value: '일',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '이이',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '삼삼삼',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '사사사사',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '오오오오오',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '육육육육육육',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '칠칠칠칠칠칠칠',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '팔팔팔팔팔팔팔팔',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '구구구구구구구구구',
+        ratio: 1
+      },
+      {
+        checked: true,
+        value: '십십십십십십십십십십',
+        ratio: 1
+      }
+    ],
+    colors: COLORS
+  }
+};
+
+export const Thirty: Story = {
+  args: {
+    items: Array.from({ length: 30 }).map((_, index) => ({
+      checked: true,
+      value: `Item ${index + 1}`,
+      ratio: 1
+    })),
+    colors: COLORS
+  }
+};
+
+export const Fifty: Story = {
+  args: {
+    items: Array.from({ length: 50 }).map((_, index) => ({
+      checked: true,
+      value: `Item ${index + 1}`,
+      ratio: 1
+    })),
+    colors: COLORS
+  }
+};
+
+export const Hundred: Story = {
+  args: {
+    items: Array.from({ length: 100 }).map((_, index) => ({
+      checked: true,
+      value: `Item ${index + 1}`,
+      ratio: 1
+    })),
+    colors: COLORS
   }
 };
