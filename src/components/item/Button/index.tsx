@@ -8,7 +8,7 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const Button2 = ({ label = '', color = 'white', iconName = '', ...props }: Partial<ButtonProps>) => {
+const Button = ({ label = '', color = 'white', iconName = '', ...props }: Partial<ButtonProps>) => {
   return (
     <StyledButton
       color={color}
@@ -51,4 +51,4 @@ const StyledButton = styled.button<{
   cursor: pointer;
 `;
 
-export default Button2;
+export default Button;

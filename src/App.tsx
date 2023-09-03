@@ -1,5 +1,11 @@
+import Item from './components/item';
+
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Item></Item>
+    </div>
+  );
 }
 
 export default App;

@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 import ItemInput from '../ItemInput';
 import { css } from '@emotion/react';
+import Button from '../Button';
 
 const ItemListContainer = styled.div`
+  width: 100%;
   display: flex;
   gap: 20px;
 `;
@@ -28,20 +30,21 @@ const ItemList = () => {
     <ItemListContainer>
       <ItemInput
         inputType="checkbox"
-        width={1.2}></ItemInput>
+        width={1.7}></ItemInput>
       <ItemInputContainer>
         <Span>1</Span>
         <ItemInput
           inputType="text"
           borderColor="#5c7fff9e"
-          width={20}
+          width={28}
           css={css`
             padding-left: 45px;
           `}></ItemInput>
         <ItemInput
           inputType="text"
           borderColor="#7f7f7f9e"
-          width={4}></ItemInput>
+          width={5}></ItemInput>
+        <Button iconName="+"></Button>
       </ItemInputContainer>
     </ItemListContainer>
   );

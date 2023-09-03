@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 const Input = styled.input<{ borderColor?: string }>`
-  width: 100%;
-  height: 2.3em;
+  height: 2.5em;
   border-radius: 5px;
   font-size: 1em;
   text-align: center;
@@ -21,7 +20,7 @@ interface InputInit {
 
 const ItemInput = ({ inputType, width, borderColor, ...props }: InputInit) => {
   const InputStyle = {
-    'max-width': `${width}em`,
+    width: `${width}em`,
     border: `1px solid ${borderColor}`
   };
 
