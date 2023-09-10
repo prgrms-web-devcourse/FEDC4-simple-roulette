@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import Button from './Button';
 import ItemList from './ItemList';
+import { pageStore } from '@/store/store';
+import { useStore } from 'zustand';
 
 const ItemSection = styled.div`
   width: 100%;
@@ -35,19 +37,24 @@ const ItemSectionList = styled.div`
 `;
 
 function Item() {
+  const { addItem, items } = useStore(pageStore); // useStore로 store를 가져옵니다.
+
   return (
     <ItemSection>
       <ItemSectionHeader>
         <Button iconName="+"></Button>
       </ItemSectionHeader>
       <ItemSectionList>
-        <ItemList></ItemList>
+        {items.map((item, idx) => (
+          <ItemList key={idx} />
+        ))}
       </ItemSectionList>
       <ItemSectionFooter>
         <Button
           iconName="+"
           label="항목 추가"
-          color="blue"></Button>
+          color="blue"
+          onClick={addItem}></Button>
       </ItemSectionFooter>
     </ItemSection>
   );

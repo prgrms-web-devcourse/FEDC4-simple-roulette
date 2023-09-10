@@ -9,7 +9,7 @@ interface ItemInfo {
 
 interface ItemStore {
   items: ItemInfo[];
-  addItem: (item: ItemInfo) => void;
+  addItem: () => void;
   clearItems: () => void;
 }
 
@@ -19,9 +19,9 @@ export const pageStore = create<ItemStore>()(
       (set) => ({
         items: [{ checked: true, value: '', ratio: 1 }],
         // 항목 추가
-        addItem: (item) => {
+        addItem: () => {
           set((state) => ({
-            items: [...state.items, item]
+            items: [...state.items, { checked: true, value: '', ratio: 1 }]
           }));
         },
         // 리스트 새로고침
