@@ -11,7 +11,7 @@ interface ItemInfo {
 
 interface ItemStore {
   items: ItemInfo[];
-  addItem: (item: ItemInfo) => void;
+  addItem: () => void;
   clearItems: () => void;
   toggleCheckbox: (id: string) => void;
   setValue: ({ id, value }: { id: string; value: string }) => void;
@@ -24,9 +24,9 @@ export const pageStore = create<ItemStore>()(
       (set) => ({
         items: [{ checked: true, value: '', ratio: 1, id: v4() }],
         // 항목 추가
-        addItem: (item) => {
+        addItem: () => {
           set((state) => ({
-            items: [...state.items, item]
+            items: [...state.items, { checked: true, value: '', ratio: 1 }]
           }));
         },
         // 리스트 새로고침

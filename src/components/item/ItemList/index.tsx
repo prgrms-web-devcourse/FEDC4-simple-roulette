@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import ItemInput from '../ItemInput';
 import { css } from '@emotion/react';
 import Button from '../Button';
+import { useStore } from 'zustand';
+import { pageStore } from '@/store/store';
 
 const ItemListContainer = styled.div`
   width: 100%;
@@ -44,7 +46,7 @@ const ItemList = () => {
           inputType="text"
           borderColor="#7f7f7f9e"
           width={5}></ItemInput>
-        <Button iconName="+"></Button>
+        <Button iconName="x"></Button>
       </ItemInputContainer>
     </ItemListContainer>
   );

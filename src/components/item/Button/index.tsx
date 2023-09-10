@@ -48,7 +48,10 @@ const StyledButton = styled.button<{
   border-radius: 10px;
   text-align: center;
 
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+  }
 `;
 
 export default Button;
