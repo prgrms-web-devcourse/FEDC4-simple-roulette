@@ -37,12 +37,14 @@ const ItemSectionList = styled.div`
 `;
 
 function Item() {
-  const { addItem, items } = useStore(pageStore); // useStore로 store를 가져옵니다.
+  const { addItem, items, clearItems } = useStore(pageStore);
 
   return (
     <ItemSection>
       <ItemSectionHeader>
-        <Button iconName="+"></Button>
+        <Button
+          iconName="+"
+          onClick={clearItems}></Button>
       </ItemSectionHeader>
       <ItemSectionList>
         {items.map((item, idx) => (
