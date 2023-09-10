@@ -26,7 +26,7 @@ export const pageStore = create<ItemStore>()(
         // 항목 추가
         addItem: () => {
           set((state) => ({
-            items: [...state.items, { checked: true, value: '', ratio: 1 }]
+            items: [...state.items, { checked: true, value: '', ratio: 1, id: v4() }]
           }));
         },
         // 리스트 새로고침
