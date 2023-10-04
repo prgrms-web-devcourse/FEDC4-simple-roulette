@@ -27,15 +27,34 @@ const Span = styled.div`
   border-right: 1px solid #2a59fe;
 `;
 
-const ItemList = () => {
+interface ItemListProps {
+  id: string;
+  value: string;
+  ratio: number;
+  index: number;
+  checked: boolean;
+}
+
+const ItemList = ({ id, value, ratio, index, checked }: ItemListProps) => {
+  const { toggleCheckbox, setValue, setRatio } = useStore(pageStore);
+
   return (
     <ItemListContainer>
       <ItemInput
+        onChange={() => {
+          toggleCheckbox(id);
+        }}
         inputType="checkbox"
+        checked={checked}
         width={1.7}></ItemInput>
       <ItemInputContainer>
-        <Span>1</Span>
+        <Span>{index + 1}</Span>
         <ItemInput
+          onChange={(e: React.FormEvent<HTMLInputElement>) => {
+            const target = e.target as HTMLInputElement;
+            setValue({ id, value: target.value });
+          }}
+          value={value}
           inputType="text"
           borderColor="#5c7fff9e"
           width={28}
@@ -43,6 +62,12 @@ const ItemList = () => {
             padding-left: 45px;
           `}></ItemInput>
         <ItemInput
+          onChange={(e: React.FormEvent<HTMLInputElement>) => {
+            const target = e.target as HTMLInputElement;
+            const newRatio = Number(target.value.replace(/[^0-9.]/g, '')) || 0;
+            setRatio({ id, ratio: newRatio });
+          }}
+          ratio={ratio}
           inputType="text"
           borderColor="#7f7f7f9e"
           width={5}></ItemInput>

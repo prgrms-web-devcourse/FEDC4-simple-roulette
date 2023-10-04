@@ -16,20 +16,40 @@ interface InputInit {
   inputType: string;
   width?: number;
   borderColor?: string;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  value?: string;
+  ratio?: number;
+  checked?: boolean;
 }
 
-const ItemInput = ({ inputType, width, borderColor, ...props }: InputInit) => {
+const ItemInput = ({ inputType, width, borderColor, onChange, value, ratio, checked, ...props }: InputInit) => {
   const InputStyle = {
     width: `${width}em`,
     border: `1px solid ${borderColor}`
   };
-
   return (
-    <Input
-      {...props}
-      type={inputType}
-      style={InputStyle}
-      borderColor={borderColor}></Input>
+    <>
+      {ratio !== undefined ? (
+        <Input
+          {...props}
+          checked={checked}
+          type={inputType}
+          style={InputStyle}
+          borderColor={borderColor}
+          onChange={onChange}
+          value={ratio || 0}></Input>
+      ) : (
+        <Input
+          {...props}
+          checked={checked}
+          type={inputType}
+          style={InputStyle}
+          borderColor={borderColor}
+          onChange={onChange}
+          value={value ?? ''}
+          placeholder="항목 이름"></Input>
+      )}
+    </>
   );
 };
 
