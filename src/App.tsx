@@ -1,5 +1,11 @@
+import Title from './component/title';
+
 function App() {
-  return <div></div>;
+  return (
+    <>
+      <Title />
+    </>
+  );
 }
 
 export default App;
