@@ -15,7 +15,6 @@ const MyIcon = styled.span<IconStyleProps>`
 `;
 
 const Icon: React.FC<IconProps> = ({ name, color, size, ...props }: IconProps) => {
-  console.log('name:', name);
   return (
     <MyIcon
       className="material-symbols-outlined"
