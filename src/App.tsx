@@ -1,10 +1,10 @@
-import Item from './components/item';
+import Title from './component/title';
 
 function App() {
   return (
-    <div>
-      <Item></Item>
-    </div>
+    <>
+      <Title />
+    </>
   );
 }
 
