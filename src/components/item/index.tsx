@@ -81,7 +81,14 @@ function Item() {
       </ItemSectionHeader>
       <ItemSectionList>
         {items.map((item, idx) => (
-          <ItemList key={idx} />
+          <ItemList
+            key={item.id}
+            id={item.id}
+            value={item.value}
+            ratio={item.ratio}
+            index={idx}
+            checked={item.checked}
+          />
         ))}
         {textareaVisible && (
           <TextAreaWrapper>
