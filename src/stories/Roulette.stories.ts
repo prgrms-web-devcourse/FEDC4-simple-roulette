@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Roulette, { COLORS } from '@/components/roulette';
+import Roulette, { COLORS } from '@/components/Roulette';
 
 const meta = {
   title: 'Component/Roulette',
