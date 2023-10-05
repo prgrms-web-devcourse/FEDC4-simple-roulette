@@ -82,7 +82,7 @@ function Item() {
       <ItemSectionList>
         {items.map((item, idx) => (
           <ItemList
-            key={idx}
+            key={item.id}
             id={item.id}
             value={item.value}
             ratio={item.ratio}
