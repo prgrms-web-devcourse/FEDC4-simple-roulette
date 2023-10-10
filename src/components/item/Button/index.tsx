@@ -1,25 +1,25 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Icon from '@/component/common/Icon';
 
 interface ButtonProps {
   label: string;
+  iconColor: string;
   color: 'white' | 'red' | 'blue' | 'gray';
   iconName: string;
   onClick: () => void;
 }
 
-const Button = ({ label = '', color = 'white', iconName = '', ...props }: Partial<ButtonProps>) => {
+const Button = ({ label = '', color = 'white', iconName = '', iconColor = '', ...props }: Partial<ButtonProps>) => {
   return (
     <StyledButton
       color={color}
       {...props}>
       {iconName && (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-          width="12">
-          <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path>
-        </svg>
+        <Icon
+          size={20}
+          color={iconColor}
+          name={iconName}></Icon>
       )}
       {label}
     </StyledButton>
@@ -43,7 +43,7 @@ const StyledButton = styled.button<{
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 15px;
+  padding: 12px;
   font-size: 16px;
   border-radius: 10px;
   text-align: center;

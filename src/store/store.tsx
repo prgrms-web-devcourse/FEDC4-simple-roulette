@@ -11,11 +11,12 @@ interface ItemInfo {
 
 interface ItemStore {
   items: ItemInfo[];
-  addItem: (newItems?: ItemInfo[]) => void; // Make newItems optional
+  addItem: (newItems?: ItemInfo[]) => void;
   clearItems: () => void;
   toggleCheckbox: (id: string) => void;
   setValue: ({ id, value }: { id: string; value: string }) => void;
   setRatio: ({ id, ratio }: { id: string; ratio: number }) => void;
+  removeItem: (id: string) => void;
 }
 
 export const pageStore = create<ItemStore>()(
@@ -52,6 +53,11 @@ export const pageStore = create<ItemStore>()(
         setRatio: ({ id, ratio }) => {
           set((state) => ({
             items: state.items.map((item) => (item.id === id ? { ...item, ratio } : item))
+          }));
+        },
+        removeItem: (id) => {
+          set((state) => ({
+            items: state.items.filter((item) => item.id !== id)
           }));
         }
       }),

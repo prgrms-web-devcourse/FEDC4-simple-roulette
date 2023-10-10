@@ -104,7 +104,7 @@ function Item() {
     <ItemSection>
       <ItemSectionHeader>
         <Button
-          iconName="+"
+          iconName="restart_alt"
           onClick={clearItems}></Button>
       </ItemSectionHeader>
       <ItemSectionList>
@@ -128,12 +128,12 @@ function Item() {
               onChange={handleTextareaChange}></TextArea>
             <BtnWrapper>
               <Button
-                iconName="+"
+                iconName="add"
                 label="작성 완료"
                 color="blue"
                 onClick={handleAddItemClick}></Button>
               <Button
-                iconName="+"
+                iconName="remove"
                 label="입력 취소"
                 color="red"
                 onClick={handleCancelClick}></Button>
@@ -143,12 +143,12 @@ function Item() {
       </ItemSectionList>
       <ItemSectionFooter>
         <Button
-          iconName="+"
+          iconName="add"
           label="여러 항목 추가"
           color="blue"
           onClick={textareaToggle}></Button>
         <Button
-          iconName="+"
+          iconName="add"
           label="항목 추가"
           color="blue"
           onClick={() => {

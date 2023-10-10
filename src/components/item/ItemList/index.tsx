@@ -36,7 +36,11 @@ interface ItemListProps {
 }
 
 const ItemList = ({ id, value, ratio, index, checked }: ItemListProps) => {
-  const { toggleCheckbox, setValue, setRatio } = useStore(pageStore);
+  const { toggleCheckbox, setValue, setRatio, removeItem } = useStore(pageStore);
+
+  const handleRemoveItemClick = () => {
+    removeItem(id);
+  };
 
   return (
     <ItemListContainer>
@@ -71,7 +75,9 @@ const ItemList = ({ id, value, ratio, index, checked }: ItemListProps) => {
           inputType="text"
           borderColor="#7f7f7f9e"
           width={5}></ItemInput>
-        <Button iconName="x"></Button>
+        <Button
+          iconName="remove"
+          onClick={handleRemoveItemClick}></Button>
       </ItemInputContainer>
     </ItemListContainer>
   );
