@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
+import { useStore } from 'zustand';
 import styled from '@emotion/styled';
+import { resultStore } from '@/store/resultStore';
 import { findRandomRatio, findItemByRatio } from './helpers';
 import type { ItemInfo, Circle, Ratio } from './types';
 
@@ -35,6 +37,7 @@ interface Props {
 const Roulette = ({ items, colors }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isRotating, setIsRotating] = useState(false);
+  const { addResult } = useStore(resultStore);
 
   /**
    * 룰렛에서 아이템의 배경을 그립니다.
@@ -187,9 +190,9 @@ const Roulette = ({ items, colors }: Props) => {
 
     setTimeout(() => {
       setIsRotating(false);
-      console.log(result);
+      addResult(result?.value ?? '');
     }, ROTATE_DURATION);
-  }, [animateRotation, isRotating, items]);
+  }, [animateRotation, isRotating, items, addResult]);
 
   useEffect(() => {
     const ctx = canvasRef?.current?.getContext('2d');
