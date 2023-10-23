@@ -13,4 +13,5 @@ export interface ItemInfo {
   checked: boolean;
   value: string;
   ratio: number;
+  id: string;
 }
