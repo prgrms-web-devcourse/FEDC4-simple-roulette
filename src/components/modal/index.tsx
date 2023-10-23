@@ -4,6 +4,7 @@ import { useStore } from 'zustand';
 import { ItemInputContainer, Span } from '../item/ItemList';
 import ItemInput from '../item/ItemInput';
 import { css } from '@emotion/react';
+import Icon from '@/component/common/Icon';
 
 interface ModalProps {
   width?: number;
@@ -23,7 +24,13 @@ const Modal = ({ width = 750, height = 500, handleModal }: ModalProps) => {
       <ResultModal
         width={width}
         height={height}>
-        <ExitButton onClick={handleModal}>X</ExitButton>
+        <ExitButton onClick={handleModal}>
+          <Icon
+            name={'close'}
+            size={20}
+            color={'black'}
+          />
+        </ExitButton>
         <ResultTitle>결과 확인</ResultTitle>
         <ResultLists>
           {results.map((x, index) => {
@@ -78,7 +85,6 @@ const ResultModal = styled.div<ModalProps>`
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
 `;
 const ExitButton = styled.button({
-  fontSize: 20,
   fontWeight: 'bold',
   border: 'none',
   background: 'none',
