@@ -6,19 +6,38 @@ import { resultStore } from '@/store/resultStore';
 import { useStore } from 'zustand';
 import Button from '@/components/item/Button';
 import Modal from '@/components/modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const LastResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+`;
+const LastResultDiv = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  color: #68759d;
+`;
 function App() {
   const { items, toggleCheckbox } = useStore(pageStore);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [result, setResult] = useState(items[0]);
   const { results } = useStore(resultStore);
   const [resultValue, resultId] = results.length ? results[results.length - 1] : [null, null];
-  let result = items[0];
 
   const handleCheck = () => {
     for (let i = 0; i < items.length; i++) {
       if (resultId === items[i].id) {
         toggleCheckbox(resultId);
-        result = items[i];
+        setResult(items[i]);
         break;
       }
     }
@@ -33,15 +52,30 @@ function App() {
     setModalOpen(!modalOpen);
   };
 
+  useEffect(() => {
+    for (let i = 0; i < items.length; i++) {
+      if (resultId === items[i].id) {
+        setResult(items[i]);
+        break;
+      }
+    }
+  }, [items, result, resultId]);
+
   return (
-    <div>
+    <Container>
       <Title />
-      <div>{results.length ? <div>{resultValue}</div> : <div>결과 당첨!</div>}</div>
-      <Button
-        label={result?.checked ? '항목 숨기기' : '숨기기 취소'}
-        color={'gray'}
-        onClick={handleCheck}
-      />
+      <LastResultContainer>
+        <LastResultDiv>{results.length ? <div>{resultValue}</div> : <div>결과 당첨!</div>}</LastResultDiv>
+        <Button
+          label={result?.checked ? '항목 숨기기' : '숨기기 취소'}
+          color={'gray'}
+          onClick={handleCheck}
+          css={css`
+            margin: 10px 0px;
+            height: 2rem;
+          `}
+        />
+      </LastResultContainer>
       <Roulette
         items={items}
         colors={COLORS}
@@ -52,7 +86,7 @@ function App() {
       />
       {modalOpen && <Modal handleModal={handleModal} />}
       <Item />
-    </div>
+    </Container>
   );
 }
 
