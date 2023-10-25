@@ -11,7 +11,7 @@ const ItemListContainer = styled.div`
   gap: 20px;
 `;
 
-const ItemInputContainer = styled.div`
+export const ItemInputContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
@@ -19,7 +19,7 @@ const ItemInputContainer = styled.div`
   gap: 20px;
 `;
 
-const Span = styled.div`
+export const Span = styled.div`
   width: 1.5em;
   display: inline-block;
   position: absolute;

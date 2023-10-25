@@ -190,7 +190,7 @@ const Roulette = ({ items, colors }: Props) => {
 
     setTimeout(() => {
       setIsRotating(false);
-      addResult(result?.value ?? '');
+      addResult(result?.value ?? '', result?.id ?? '');
     }, ROTATE_DURATION);
   }, [animateRotation, isRotating, items, addResult]);
 

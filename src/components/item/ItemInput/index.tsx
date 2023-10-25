@@ -20,16 +20,38 @@ interface InputInit {
   value?: string;
   ratio?: number;
   checked?: boolean;
+  disabled?: boolean;
 }
 
-const ItemInput = ({ inputType, width, borderColor, onChange, value, ratio, checked, ...props }: InputInit) => {
+const ItemInput = ({
+  inputType,
+  width,
+  borderColor,
+  onChange,
+  value,
+  ratio,
+  checked,
+  disabled,
+  ...props
+}: InputInit) => {
   const InputStyle = {
     width: `${width}em`,
     border: `1px solid ${borderColor}`
   };
   return (
     <>
-      {ratio !== undefined ? (
+      {disabled ? (
+        <Input
+          {...props}
+          checked={checked}
+          type={inputType}
+          style={InputStyle}
+          borderColor={borderColor}
+          onChange={onChange}
+          value={value ?? ''}
+          placeholder="항목 이름"
+          disabled></Input>
+      ) : ratio !== undefined ? (
         <Input
           {...props}
           checked={checked}
